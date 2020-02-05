@@ -6,17 +6,17 @@
 /*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 02:34:14 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 00:29:36 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 04:47:56 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
 char	**get_matrix_of_dots(unsigned int rows, unsigned int cols)
 {
-	char	**matrix;
-	int		i;
-	int		j;
+	char				**matrix;
+	unsigned int		i;
+	unsigned int		j;
 
 	if (!(matrix = (char **)malloc((rows + 1) * sizeof(char *))))
 		return (NULL);

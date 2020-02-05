@@ -6,7 +6,7 @@
 #    By: slisandr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 21:31:09 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/05 04:40:08 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/05 04:51:59 by slisandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ SRC_RAW = \
 			get_matrix_of_dots.c \
 			get_mstr_h.c \
 			get_mstr_w.c \
-			join_matrices.c \
+			join_matrices_str.c \
 			print_mstr.c \
 			wipe_mstr.c \
 			get_next_line.c

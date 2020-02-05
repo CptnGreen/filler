@@ -6,19 +6,19 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 20:08:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 00:22:24 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 04:54:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
+#include "libft.h"
 
 char	**join_matrices_str(char **m1, char **m2)
 {
 	char			**m;
-	unsigned int	m1_h;
-	unsigned int	m2_h;
-	int				i;
-	int				j;
+	size_t			m1_h;
+	size_t			m2_h;
+	unsigned int	i;
+	unsigned int	j;
 
 	if (!m1 || !m2)
 		return (NULL);

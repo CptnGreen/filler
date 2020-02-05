@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 21:38:18 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 04:34:56 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/05 04:44:38 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,5 @@ size_t			get_mstr_w(char **m);
 size_t			get_mstr_h(char **m);
 char			**get_matrix_of_dots(unsigned int rows, unsigned int cols);
 char			**join_matrices_str(char **m1, char **m2);
-
 
 #endif
