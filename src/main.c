@@ -18,13 +18,14 @@ int		main(void)
 	print_mstr(map->mstr);
 
 
-	printf("main: So far so good!\n");
 
+	printf("main: So far so good 1!\n");
 
 	if (!(piece = get_piece(fd)))
 		return (1);
 	print_mstr(piece->mstr);
 
+	printf("main: So far so good 2!\n");
 
 	opts = NULL;
 	if (!(get_opts_lst(map, piece, opts)))

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 16:24:43 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:43:59 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 	char	**split;
 	int		n_row;
 
-	if (!(map->mstr = (char **)ft_memalloc(sizeof(char *) * map->h)))
+	if (!(map->mstr = (char **)ft_memalloc(sizeof(char *) * (map->h + 1))))
 		return (0);
 	get_next_line(fd, line);
 	n_row = 0;

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 16:19:03 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/07 16:44:39 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ t_piece	*init_piece(int const fd)
 {
 	t_piece	*piece;
 
-	printf("init_piece: I'm here!\n");
 	if (!(piece = (t_piece *)ft_memalloc(sizeof(t_piece))))
 		return (NULL);
 	piece->h = 0;
 	piece->w = 0;
 	piece->mstr = NULL;
+	printf("init_piece: I'm here!\n");
 	return (piece);
 }
 
@@ -40,6 +40,7 @@ int		get_piece_dimensions(int const fd, t_piece *piece, char **line)
 		}
 	}
 	wipe_mstr(split);
+	printf("get_piece_dims: I'm here!\n");
 	return ((piece->h == 0 || piece->w == 0) ? (0) : (1));
 }
 
@@ -47,15 +48,15 @@ int		get_piece_rows(int const fd, t_piece *piece, char **line)
 {
 	int		n_row;
 
-	if (!(piece->mstr = (char **)ft_memalloc(sizeof(char *) * piece->h)))
+	if (!(piece->mstr = (char **)ft_memalloc(sizeof(char *) * (piece->h + 1))))
 		return (0);
 	n_row = 0;
 	while (n_row < piece->h && get_next_line(fd, line))
 	{
 		piece->mstr[n_row] = ft_strdup(*line);
-		printf("piece->mstr[%2d] = %s\n", n_row, piece->mstr[n_row]);
 		n_row += 1;
 	}
+	piece->mstr[n_row] = NULL;
 	return ((n_row == -1) ? (0) : (1));
 }
 
