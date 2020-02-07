@@ -6,13 +6,13 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 16:43:59 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/07 21:43:04 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-t_map	*init_map(int const fd)
+t_map	*init_map(void)
 {
 	t_map	*map;
 
@@ -53,12 +53,11 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 	if (!(map->mstr = (char **)ft_memalloc(sizeof(char *) * (map->h + 1))))
 		return (0);
 	get_next_line(fd, line);
-	n_row = 0;
-	while (n_row < map->h && get_next_line(fd, line))
+	n_row = -1;
+	while (++n_row < (int)(map->h) && get_next_line(fd, line))
 	{
 		split = ft_strsplit(*line, ' ');
 		map->mstr[n_row] = ft_strdup(split[1]);
-		n_row += 1;
 	}
 	map->mstr[n_row] = NULL;
 	wipe_mstr(split);
@@ -70,7 +69,8 @@ t_map	*get_map(int const fd)
 	t_map	*map;
 	char	**line;
 
-	if ((map = init_map(fd)) && \
+	line = NULL;
+	if ((map = init_map()) && \
 		(line = (char **)ft_memalloc(sizeof(char *))) && \
 		get_map_dimensions(fd, map, line) && \
 		get_map_rows(fd, map, line))

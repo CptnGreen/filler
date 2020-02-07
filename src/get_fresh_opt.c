@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_mstr.c                                       :+:      :+:    :+:   */
+/*   get_fresh_opt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 20:03:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 18:26:52 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/07 18:46:14 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/07 18:46:16 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "filler.h"
 
-void	print_mstr(char **matrix)
+t_opt	*get_fresh_opt(size_t h, size_t w, int n_opt)
 {
-	int	i;
+	t_opt	*opt;
 
-	if (matrix)
-	{
-		i = 0;
-		while (matrix[i])
-		{
-			ft_putendl(matrix[i]);
-			i++;
-		}
-	}
+	if (!(opt = (t_opt *)ft_memalloc(sizeof(t_opt))) || \
+		!(opt->str = ft_strnew(h * w)))
+		return (NULL);
+	opt->u = NULL;
+	opt->d = NULL;
+	opt->z = NULL;
+	opt->n = n_opt;
+	opt->h = h;
+	opt->w = w;
+	opt->n_intersecs = 0;
+	opt->sum = 0;
+	return (opt);
 }

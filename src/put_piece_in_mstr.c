@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_piece_in_mstr.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/07 21:45:31 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/07 21:46:17 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y)
 {
-	int		i;
-	int		j;
-	
-	if (y + p->w < m->w && x + p->h < m->h)
+	size_t		i;
+	size_t		j;
+
+	if (y + p->w <= m->w && x + p->h <= m->h)
 	{
 		if (!(m->mstr_tmp = get_matrix_of_dots(m->h, m->w)))
 			return (0);

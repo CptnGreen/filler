@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   filler.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/07 18:47:39 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FILLER_H
 # define FILLER_H
 
@@ -37,5 +49,6 @@ void	wipe_map(t_map **map);
 void	wipe_piece(t_piece **piece);
 int		get_opts_lst(t_map *m, t_piece *p, t_opt *o);
 int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y);
+t_opt	*get_fresh_opt(size_t h, size_t w, int n_opt);
 
 #endif
