@@ -33,7 +33,9 @@ SRC_RAW = \
 	get_piece.c \
 	get_map.c \
 	wipe_piece.c \
-	wipe_map.c
+	wipe_map.c \
+	get_opts_lst.c \
+	put_piece_in_mstr.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_RAW:.c=.o))

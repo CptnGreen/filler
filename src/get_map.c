@@ -1,8 +1,7 @@
 #include "filler.h"
 
-int		get_map_dimensions(int const fd, t_map *map)
+int		get_map_dimensions(int const fd, t_map *map, char **line)
 {
-	char	**line;
 	char	**split;
 
 	while (get_next_line(fd, line))
@@ -19,18 +18,17 @@ int		get_map_dimensions(int const fd, t_map *map)
 	return ((map->h == 0 || map->w == 0) ? (0) : (1));
 }
 
-int		get_map_rows(int const fd, t_map *map)
+int		get_map_rows(int const fd, t_map *map, char **line)
 {
-	char	**line;
 	char	**split;
 	int		n_row;
 
+	if (!(map->mstr = (char **)ft_memalloc(sizeof(char *) * map->h)))
+		return (0);
 	get_next_line(fd, line);
-	/* printf("get_map_rows: line = %s!\n", *line); */
 	n_row = -1;
 	while (get_next_line(fd, line))
 	{
-		printf("get_map_rows: n_row = %d\n", n_row);
 		split = ft_strsplit(*line, ' ');
 		map->mstr[++n_row] = ft_strdup(split[1]);
 		if (ft_atoi(split[0]) >= map->h - 1)
@@ -52,18 +50,23 @@ t_map	*init_map(int const fd)
 	map->c_enemy = 0;
 	map->mstr = NULL;
 	map->mstr_tmp = NULL;
-	printf("init_map: map->h = %ld\n", map->h);
 	return (map);
 }
 
 t_map	*get_map(int const fd)
 {
 	t_map	*map;
+	char	**line;
 
 	if ((map = init_map(fd)) && \
-		get_map_dimensions(fd, map) && \
-		get_map_rows(fd, map))
+		(line = (char **)ft_memalloc(sizeof(char *))) && \
+		get_map_dimensions(fd, map, line) && \
+		get_map_rows(fd, map, line))
+	{
+		ft_strdel(line);
 		return (map);
+	}
+	ft_strdel(line);
 	wipe_map(&map);
 	return (NULL);
 }

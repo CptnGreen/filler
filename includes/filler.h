@@ -25,7 +25,8 @@ typedef struct		s_opt{
 	struct s_opt	*z;
 	char			*str;
 	int				n;
-	int				sq_side;
+	size_t			h;
+	size_t			w;
 	int				n_intersecs;
 	int				sum;
 }					t_opt;
@@ -34,5 +35,7 @@ t_map	*get_map(int const fd);
 t_piece	*get_piece(int const fd);
 void	wipe_map(t_map **map);
 void	wipe_piece(t_piece **piece);
+int		get_opts_lst(t_map *m, t_piece *p, t_opt *o);
+int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y);
 
 #endif

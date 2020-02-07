@@ -1,8 +1,7 @@
 #include "filler.h"
 
-int		get_piece_dimensions(int const fd, t_piece *piece)
+int		get_piece_dimensions(int const fd, t_piece *piece, char **line)
 {
-	char	**line;
 	char	**split;
 
 	while (get_next_line(fd, line))
@@ -19,11 +18,12 @@ int		get_piece_dimensions(int const fd, t_piece *piece)
 	return ((piece->h == 0 || piece->w == 0) ? (0) : (1));
 }
 
-int		get_piece_rows(int const fd, t_piece *piece)
+int		get_piece_rows(int const fd, t_piece *piece, char **line)
 {
-	char	**line;
 	int		n_row;
 
+	if (!(piece->mstr = (char **)ft_memalloc(sizeof(char *) * piece->h)))
+		return (0);
 	n_row = -1;
 	while (get_next_line(fd, line))
 	{
@@ -49,11 +49,17 @@ t_piece	*init_piece(int const fd)
 t_piece	*get_piece(int const fd)
 {
 	t_piece	*piece;
+	char	**line;
 
 	if ((piece = init_piece(fd)) && \
-		get_piece_dimensions(fd, piece) && \
-		get_piece_rows(fd, piece))
+		(line = (char **)ft_memalloc(sizeof(char *))) && \
+		get_piece_dimensions(fd, piece, line) && \
+		get_piece_rows(fd, piece, line))
+	{
+		ft_strdel(line);
 		return (piece);
+	}
+	ft_strdel(line);
 	wipe_piece(&piece);
 	return (NULL);
 }

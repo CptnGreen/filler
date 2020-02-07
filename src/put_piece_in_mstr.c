@@ -19,7 +19,7 @@ int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y)
 				i += 1;
 				continue ;
 			}
-			m->mstr_tmp[x + i][y + j] = m->c_us;
+			m->mstr_tmp[x + i][y + j] = 'X';// m->c_us;
 			j += 1;
 		}
 		return (1);
