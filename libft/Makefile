@@ -6,7 +6,7 @@
 #    By: slisandr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 21:31:09 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/05 04:51:59 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/07 23:43:14 by slisandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RESET = \033[0m
 
 .PHONY: all clean fclean re norm
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 NAME = libft.a
 
@@ -92,6 +92,7 @@ SRC_RAW = \
 			join_matrices_str.c \
 			print_mstr.c \
 			wipe_mstr.c \
+			ft_mstr_to_str.c \
 			get_next_line.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))

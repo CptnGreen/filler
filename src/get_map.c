@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 21:43:04 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/07 22:49:26 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_map	*init_map(void)
 	map->c_enemy = 0;
 	map->mstr = NULL;
 	map->mstr_tmp = NULL;
+	map->opts = NULL;
 	return (map);
 }
 
@@ -76,6 +77,7 @@ t_map	*get_map(int const fd)
 		get_map_rows(fd, map, line))
 	{
 		ft_strdel(line);
+		map->opts = get_fresh_opt(map->h, map->w, 0);
 		return (map);
 	}
 	ft_strdel(line);

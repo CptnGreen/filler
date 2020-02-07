@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wipe_map.c                                         :+:      :+:    :+:   */
+/*   wipe_opt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 23:53:30 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 23:53:34 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/07 23:53:53 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/08 00:03:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	wipe_map(t_map **map)
+void	wipe_opt(t_opt **opt)
 {
-	wipe_mstr((*map)->mstr);
-	wipe_mstr((*map)->mstr_tmp);
-	*map = NULL;
+	(*opt)->u = NULL;
+	(*opt)->d = NULL;
+	(*opt)->z = NULL;
+	ft_strdel(&((*opt)->str));
+	*opt = NULL;
 }
