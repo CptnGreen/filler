@@ -16,9 +16,15 @@ int		main(void)
 	if (!(map = get_map(fd)))
 		return (1);
 	print_mstr(map->mstr);
+
+
+	printf("main: So far so good!\n");
+
+
 	if (!(piece = get_piece(fd)))
 		return (1);
 	print_mstr(piece->mstr);
+
 
 	opts = NULL;
 	if (!(get_opts_lst(map, piece, opts)))

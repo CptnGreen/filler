@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_opts_lst.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/07 15:31:56 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/07 16:21:40 by slisandr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 t_opt	*get_fresh_opt(size_t h, size_t w, int n_opt)
@@ -55,8 +67,19 @@ int		get_opts_lst(t_map *m, t_piece *p, t_opt *o)
 			x += 1;
 			continue ;
 		}
+		printf("get_opts: x = %d, y = %d\n", x, y);
 		put_piece_in_mstr(m, p, x, y);
+
+
+
+
+
 		print_mstr(m->mstr_tmp);
+		printf("Well done!\n");
+
+
+
+
 		o->d = get_opt_from_mstr(m, n_opt);
 		n_opt += 1;
 		o = o->d;
