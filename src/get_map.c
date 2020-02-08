@@ -59,8 +59,8 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 	while (++n_row < map->h && get_next_line(fd, line))
 	{
 		split = ft_strsplit(*line, ' ');
-		map->mstr[n_row] = ft_strdup(split[1]);
-		if (map->c_us == 0 && ft_strchr(map->mstr[n_row], 'o'))
+		map->mstr[n_row] = ft_strdup_int(split[1]);
+		if (map->c_us == 0 && ft_tabint(map->mstr[n_row], 'o'))
 		{
 			map->c_us = 'X';
 			map->c_enemy = 'O';

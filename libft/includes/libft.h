@@ -135,5 +135,6 @@ char			**join_matrices_str(char **m1, char **m2);
 char			*ft_mstr_to_str(char **m_str);
 int				*ft_tabnew(size_t size);
 int				*ft_tabdup(int const *tab, size_t size);
+int				*ft_tabint(int const *ptr, size_t size, int c);
 
 #endif
