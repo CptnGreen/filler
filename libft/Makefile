@@ -93,6 +93,8 @@ SRC_RAW = \
 			print_mstr.c \
 			wipe_mstr.c \
 			ft_mstr_to_str.c \
+			ft_tabdup.c \
+			ft_tabnew.c \
 			get_next_line.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))

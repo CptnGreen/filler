@@ -133,5 +133,7 @@ size_t			get_mstr_h(char **m);
 char			**get_matrix_of_dots(unsigned int rows, unsigned int cols);
 char			**join_matrices_str(char **m1, char **m2);
 char			*ft_mstr_to_str(char **m_str);
+int				*ft_tabnew(size_t size);
+int				*ft_tabdup(int const *tab, size_t size);
 
 #endif
