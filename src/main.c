@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 22:29:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 04:07:37 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 04:46:48 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		main(void)
 	fd = open(FILE, O_RDONLY);
 	if (!(map = get_map(fd)))
 		return (1);
-	map->c_enemy = 'O';
 	map->c_num = '1';
 	found_dot = 0;
 	print_mstr(map->mstr);
