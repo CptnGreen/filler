@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/08 00:02:38 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/08 02:48:27 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,6 +39,7 @@ SRC_RAW = \
 	get_opts_lst.c \
 	put_piece_in_mstr.c \
 	get_fresh_opt.c \
+	get_heat_map.c \
 	print_opts.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))

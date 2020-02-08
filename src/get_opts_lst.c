@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 15:31:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 00:01:19 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 02:51:24 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,37 @@ t_opt	*get_header_opt(t_map *m)
 t_opt	*get_opt_from_mstr(t_map *m, int n_opt)
 {
 	t_opt	*opt;
-	int		i;
 
-	if (!(opt = get_fresh_opt(m->h, m->w, n_opt)))
+	if (!(opt = get_fresh_opt(m->h, m->w, n_opt)) || \
+		!(opt->str = ft_mstr_to_str(m->mstr_tmp)))
+	{
+		wipe_opt(&opt);
 		return (NULL);
-	i = -1;
-	while (++i < (int)(m->h) && m->mstr_tmp[i])
-		opt->str = ft_strncat(opt->str, m->mstr_tmp[i], m->w);
-	return ((i == -1) ? (NULL) : (opt));
+	}
+	return (opt);
 }
+
+/* void	get_n_intersecs(t_map *map) */
+/* { */
+/* 	t_opt	*o; */
+/* 	int		i; */
+
+/* 	o = (map->opts)->d; */
+/* 	i = 0; */
+/* 	while (o) */
+/* 	{ */
+/* 		if (!(o->str[i])) */
+/* 		{ */
+/* 			i = 0; */
+/* 			o = o->d; */
+/* 			continue ; */
+/* 		} */
+/* 		if ((o->str[i] == m->c_us && m->opts->str[i] != '.') && \ */
+/* 			(++(o->n_intersecs) > 1)) */
+/* 			return ; */
+/* 		i += 1; */
+/* 	} */
+/* } */
 
 int		get_opts_lst(t_map *m, t_piece *p)
 {
@@ -51,9 +73,9 @@ int		get_opts_lst(t_map *m, t_piece *p)
 	y = 0;
 	n_opt = 0;
 	o = m->opts;
-	o->d = get_header_opt(m);
+	if (!(o->d = get_header_opt(m)))
+		return (0);
 	o = o->d;
-	print_opts(m);
 	while (x + p->h <= m->h)
 	{
 		if (y + p->w > m->w)
@@ -63,11 +85,13 @@ int		get_opts_lst(t_map *m, t_piece *p)
 			continue ;
 		}
 		put_piece_in_mstr(m, p, x, y);
-		o->d = get_opt_from_mstr(m, n_opt);
-		n_opt += 1;
+		if (!(o->d = get_opt_from_mstr(m, n_opt)))
+			return (0);
 		o = o->d;
+		n_opt += 1;
 		y += 1;
 	}
 	o->d = NULL;
+	print_opts(m);
 	return (1);
 }

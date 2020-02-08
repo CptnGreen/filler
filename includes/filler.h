@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 23:56:12 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 02:59:12 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct		s_map{
 	size_t			w;
 	char			c_us;
 	char			c_enemy;
+	char			c_num;
 	char			**mstr;
 	char			**mstr_tmp;
 	t_opt			*opts;
@@ -53,5 +54,6 @@ int					put_piece_in_mstr(t_map *m, t_piece *p, int x, int y);
 t_opt				*get_fresh_opt(size_t h, size_t w, int n_opt);
 int					print_opts(t_map *map);
 void				wipe_opt(t_opt **opt);
+void				get_heat_map(t_map *m, int *found_dot, int x, int y);
 
 #endif
