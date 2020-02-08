@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/08 05:51:10 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/08 22:29:56 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -35,13 +35,9 @@ SRC_RAW = \
 	get_map.c \
 	wipe_piece.c \
 	wipe_map.c \
-	wipe_opt.c \
-	get_opts_lst.c \
 	put_piece_in_mstr.c \
-	get_fresh_opt.c \
 	get_heat_map.c \
-	get_piece_coordinates.c \
-	print_opts.c
+	get_piece_coordinates.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_RAW:.c=.o))

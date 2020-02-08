@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 05:53:48 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 00:50:58 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ t_map	*init_map(void)
 	map->w = 0;
 	map->c_us = 0;
 	map->c_enemy = 0;
-	map->mstr = NULL;
-	map->mstr_tmp = NULL;
-	map->opts = NULL;
+	map->mtab = NULL;
+	map->mtab_tmp = NULL;
 	map->num = NUM_BASE;
 	return (map);
 }
@@ -52,27 +51,25 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 	char	**split;
 	int		n_row;
 
-	if (!(map->mstr = (char **)ft_memalloc(sizeof(char *) * (map->h + 1))))
+	if (!(map->mtab = (int **)ft_memalloc(sizeof(int *) * (map->h))))
 		return (0);
 	get_next_line(fd, line);
 	n_row = -1;
 	while (++n_row < map->h && get_next_line(fd, line))
 	{
 		split = ft_strsplit(*line, ' ');
-		map->mstr[n_row] = ft_strdup_int(split[1]);
-		if (map->c_us == 0 && ft_tabint(map->mstr[n_row], 'o'))
+		map->mtab[n_row] = ft_strdup_int(split[1]);
+		if (map->c_us == 0 && ft_tabint(map->mtab[n_row], map->w, 'o'))
 		{
 			map->c_us = 'X';
 			map->c_enemy = 'O';
 		}
 	}
-	if (map->c_us == 0)
-	{
-		map->c_us = 'O';
-		map->c_enemy = 'X';
-	}
-	map->mstr[n_row] = NULL;
+	map->c_us = ((map->c_us == 0) ? ('O') : (map->c_us));
+	map->c_enemy = ((map->c_us == 'O') ? ('X') : ('O'));
+	map->mtab[n_row] = NULL;
 	wipe_mstr(split);
+	map->mtab_tmp = mtab_dup(map->mtab, map->h, map->w);
 	return ((n_row == -1) ? (0) : (1));
 }
 
@@ -89,9 +86,12 @@ t_map	*get_map(int const fd)
 		get_map_rows(fd, map, line))
 	{
 		found_dot = 0;
+		printf("before: map->c_enemy = %c\n", map->c_enemy);
+		print_mtab(map->mtab_tmp, map->h, map->w);
 		get_heat_map(map, &found_dot, 0, 0);
+		printf("after:\n");
+		print_mtab(map->mtab_tmp, map->h, map->w);
 		ft_strdel(line);
-		map->opts = get_fresh_opt(map->h, map->w, 0);
 		return (map);
 	}
 	ft_strdel(line);

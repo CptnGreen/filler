@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 05:53:48 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 22:10:31 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct		s_map{
 	char			c_us;
 	char			c_enemy;
 	int				num;
-	int				**mstr;
-	int				**mstr_tmp;
+	int				**mtab;
+	int				**mtab_tmp;
 }					t_map;
 
 t_map				*get_map(int const fd);

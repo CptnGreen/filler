@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_piece_in_mstr.c                                :+:      :+:    :+:   */
+/*   wipe_mtab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 21:45:31 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 22:36:12 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/08 22:13:23 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/08 22:20:58 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+/*
+** This one is like wipe_mstr() but for int arrays
+*/
 
-int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y)
+#include "libft.h"
+
+void	wipe_mtab(int **m, size_t rows, size_t cols)
 {
-	int		i;
-	int		j;
+	size_t		i;
 
-	if (y + p->w <= m->w && x + p->h <= m->h)
+	i = 0;
+	while (i < rows)
 	{
-		if (!(m->mtab_tmp = get_mtab_of_dots(m->h, m->w)))
-			return (0);
-		i = 0;
-		j = 0;
-		while (i < p->h)
-		{
-			if (j == p->w)
-			{
-				j = 0;
-				i += 1;
-				continue ;
-			}
-			m->mtab_tmp[x + i][y + j] = m->c_us;
-			j += 1;
-		}
-		return (1);
+		ft_bzero(m + i, cols);
+		ft_memdel((void **)(m + i));
+		i++;
 	}
-	return (0);
+	free(m);
+	m = NULL;
 }

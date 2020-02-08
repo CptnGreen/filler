@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_piece_in_mstr.c                                :+:      :+:    :+:   */
+/*   mtab_dup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 21:45:31 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 22:36:12 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/09 00:43:19 by slisandr          #+#    #+#             */
+/*   Updated: 2020/02/09 00:48:17 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "libft.h"
 
-int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y)
+int		**mtab_dup(int **m, unsigned int rows, unsigned int cols)
 {
-	int		i;
-	int		j;
+	int					**matrix;
+	unsigned int		i;
+	unsigned int		j;
 
-	if (y + p->w <= m->w && x + p->h <= m->h)
+	if (!(matrix = (int	**)ft_memalloc((rows + 1) * sizeof(int *))))
+		return (NULL);
+	i = 0;
+	while (i < rows)
 	{
-		if (!(m->mtab_tmp = get_mtab_of_dots(m->h, m->w)))
-			return (0);
-		i = 0;
+		matrix[i] = ft_tabnew(cols);
 		j = 0;
-		while (i < p->h)
+		while (j < cols)
 		{
-			if (j == p->w)
-			{
-				j = 0;
-				i += 1;
-				continue ;
-			}
-			m->mtab_tmp[x + i][y + j] = m->c_us;
-			j += 1;
+			matrix[i][j] = m[i][j];
+			j++;
 		}
-		return (1);
+		i++;
 	}
-	return (0);
+	matrix[i] = NULL;
+	return (matrix);
 }

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 21:38:18 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 00:00:14 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 00:48:07 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int				ft_memcmp(void const *s1, void const *s2, size_t n);
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
 
-char			*ft_strchr(const char *s, int c);
+char			*ft_strchr(const char *s, char c);
 char			*ft_strrchr(const char *s, int c);
 
 void			*ft_memchr(void const *s, int c, size_t n);
@@ -127,14 +127,19 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_isupper(char c);
 int				ft_islower(char c);
 void			wipe_mstr(char **m);
+void			wipe_mtab(int **m, size_t rows, size_t cols);
 void			print_mstr(char **matrix);
+void			print_mtab(int **matrix, size_t rows, size_t cols);
 size_t			get_mstr_w(char **m);
 size_t			get_mstr_h(char **m);
 char			**get_matrix_of_dots(unsigned int rows, unsigned int cols);
+int				**get_mtab_of_dots(unsigned int rows, unsigned int cols);
 char			**join_matrices_str(char **m1, char **m2);
 char			*ft_mstr_to_str(char **m_str);
 int				*ft_tabnew(size_t size);
 int				*ft_tabdup(int const *tab, size_t size);
+int				*ft_strdup_int(char const *s1);
 int				*ft_tabint(int const *ptr, size_t size, int c);
+int				**mtab_dup(int **m, unsigned int rows, unsigned int cols);
 
 #endif

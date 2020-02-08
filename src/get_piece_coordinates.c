@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 05:12:24 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 05:51:46 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 22:51:36 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	try_coordinates(t_map *m, t_piece *p)
 {
-	size_t		i;
-	size_t		j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -35,7 +35,7 @@ void	try_coordinates(t_map *m, t_piece *p)
 		}
 		if (p->mstr[i][j] == m->c_enemy || p->n_intersecs > 1)
 			return ;
-		p->sum += m->mstr[p->x + i][p->y + j];
+		p->sum += m->mtab[p->x + i][p->y + j];
 		j += 1;
 	}
 	if (p->n_intersecs == 1 && p->sum > p->best_sum)

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 23:53:30 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 23:53:34 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 22:29:22 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	wipe_map(t_map **map)
 {
-	wipe_mstr((*map)->mstr);
-	wipe_mstr((*map)->mstr_tmp);
+	wipe_mtab((*map)->mtab, (*map)->h, (*map)->w);
+	wipe_mtab((*map)->mtab_tmp, (*map)->h, (*map)->w);
 	*map = NULL;
 }
