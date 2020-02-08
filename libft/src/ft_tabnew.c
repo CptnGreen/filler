@@ -5,7 +5,7 @@ int		*ft_tabnew(size_t size)
 	int		*tab;
 	size_t	i;
 
-	tab = (char *)ft_memalloc(sizeof(int) * size);
+	tab = (int *)ft_memalloc(sizeof(int) * size);
 	if (tab)
 	{
 		i = 0;

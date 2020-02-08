@@ -25,7 +25,7 @@ t_map	*init_map(void)
 	map->mstr = NULL;
 	map->mstr_tmp = NULL;
 	map->opts = NULL;
-	map->num = 100;
+	map->num = NUM_BASE;
 	return (map);
 }
 
@@ -56,7 +56,7 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 		return (0);
 	get_next_line(fd, line);
 	n_row = -1;
-	while (++n_row < (int)(map->h) && get_next_line(fd, line))
+	while (++n_row < map->h && get_next_line(fd, line))
 	{
 		split = ft_strsplit(*line, ' ');
 		map->mstr[n_row] = ft_strdup(split[1]);
