@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 21:41:48 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 05:17:35 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ t_piece	*init_piece(void)
 		return (NULL);
 	piece->h = 0;
 	piece->w = 0;
+	piece->x = 0;
+	piece->y = 0;
+	piece->sum = 0;
+	piece->n_intersecs = 0;
 	piece->mstr = NULL;
 	return (piece);
 }

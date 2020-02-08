@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 22:29:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 04:46:48 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 05:50:11 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,18 @@
 
 int		main(void)
 {
-	int		fd;
-	t_map	*map;
-	t_piece	*piece;
-	int		found_dot;
+	int			fd;
+	t_map		*m;
+	t_piece		*p;
 
 	fd = open(FILE, O_RDONLY);
-	if (!(map = get_map(fd)))
+	if (!(m = get_map(fd)))
 		return (1);
-	map->c_num = '1';
-	found_dot = 0;
-	print_mstr(map->mstr);
-	get_heat_map(map, &found_dot, 0, 0);
-	printf("main: I'm here! c = %c\n", map->c_enemy);
-	print_mstr(map->mstr);
-	if (!(piece = get_piece(fd)))
+	if (!(p = get_piece(fd)))
 		return (1);
-	if (!(get_opts_lst(map, piece)))
-		return (1);
+	get_piece_coordinates(m, p);
+	put_piece_in_mstr(m, p, p->best_x, p->best_y);
+	print_mstr(m->mstr);
 	close(fd);
 	return (0);
 }

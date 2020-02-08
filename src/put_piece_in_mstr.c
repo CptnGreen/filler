@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 21:45:31 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/07 21:46:17 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 05:47:37 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		put_piece_in_mstr(t_map *m, t_piece *p, int x, int y)
 				i += 1;
 				continue ;
 			}
-			m->mstr_tmp[x + i][y + j] = 'X';// m->c_us;
+			m->mstr_tmp[x + i][y + j] = m->c_us;
 			j += 1;
 		}
 		return (1);

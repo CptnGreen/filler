@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 04:54:35 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 05:53:48 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_map	*init_map(void)
 	map->mstr = NULL;
 	map->mstr_tmp = NULL;
 	map->opts = NULL;
+	map->num = 100;
 	return (map);
 }
 
@@ -79,6 +80,7 @@ t_map	*get_map(int const fd)
 {
 	t_map	*map;
 	char	**line;
+	int		found_dot;
 
 	line = NULL;
 	if ((map = init_map()) && \
@@ -86,6 +88,8 @@ t_map	*get_map(int const fd)
 		get_map_dimensions(fd, map, line) && \
 		get_map_rows(fd, map, line))
 	{
+		found_dot = 0;
+		get_heat_map(map, &found_dot, 0, 0);
 		ft_strdel(line);
 		map->opts = get_fresh_opt(map->h, map->w, 0);
 		return (map);
