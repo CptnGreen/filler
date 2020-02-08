@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 15:31:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 02:51:24 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/08 04:10:25 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		get_opts_lst(t_map *m, t_piece *p)
 	o = m->opts;
 	if (!(o->d = get_header_opt(m)))
 		return (0);
+	/* print_opts(m); */
 	o = o->d;
 	while (x + p->h <= m->h)
 	{
@@ -92,6 +93,5 @@ int		get_opts_lst(t_map *m, t_piece *p)
 		y += 1;
 	}
 	o->d = NULL;
-	print_opts(m);
 	return (1);
 }
