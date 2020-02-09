@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 22:10:31 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 03:33:20 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define FILLER_H
 
 # define NUM_BASE 200
+# define INT_MAX 2147483647
+
+# define FD 0
+# define TEST_FILE "test"
 
 # include "libft.h"
 # include <stdio.h> // remove later!

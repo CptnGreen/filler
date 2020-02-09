@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 23:04:06 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/09 01:26:45 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 02:20:56 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	print_mtab(int **matrix, size_t rows, size_t cols)
 					printf(BLU "%c" RESET, (char)(matrix[i][j]));
 				else if (matrix[i][j] == 'X')
 					printf(MAG "%c" RESET, (char)(matrix[i][j]));
+				else if (matrix[i][j] == 'x')
+					printf(BG_MAG "%c" RESET, (char)(matrix[i][j]));
 				else if (matrix[i][j] == '.')
 					printf(CYN "%c" RESET, (char)(matrix[i][j]));
 			}

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/09 00:50:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 02:44:01 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ t_map	*get_map(int const fd)
 		get_map_rows(fd, map, line))
 	{
 		found_dot = 0;
-		printf("before: map->c_enemy = %c\n", map->c_enemy);
-		print_mtab(map->mtab_tmp, map->h, map->w);
+		/* printf("before: map->c_enemy = %c\n", map->c_enemy); */
+		/* print_mtab(map->mtab_tmp, map->h, map->w); */
 		get_heat_map(map, &found_dot, 0, 0);
-		printf("after:\n");
-		print_mtab(map->mtab_tmp, map->h, map->w);
+		/* printf("after:\n"); */
+		/* print_mtab(map->mtab_tmp, map->h, map->w); */
 		ft_strdel(line);
 		return (map);
 	}
