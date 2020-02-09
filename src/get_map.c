@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/09 02:44:01 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 04:56:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		get_map_dimensions(int const fd, t_map *map, char **line)
 
 	while (get_next_line(fd, line))
 	{
+		/* printf("Coockoo!\n"); */
 		split = ft_strsplit(*line, ' ');
 		if (ft_strcmp(split[0], "Plateau") == 0)
 		{

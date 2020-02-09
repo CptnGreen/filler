@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/08 22:29:56 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/09 05:08:24 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ MAIN = $(addprefix $(SRC_DIR)/,$(MAIN_RAW))
 TEST = test
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = slisandr.filler
 
@@ -70,9 +70,9 @@ fclean: clean
 re: fclean all
 
 
-test: re
-	clear
-	./$(NAME) $(TEST)
+test: $(NAME)
+	cp $(NAME) resources/players/
+	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/grati.filler -p2 resources/players/$(NAME)
 
 memcheck: re
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME) $(TEST)

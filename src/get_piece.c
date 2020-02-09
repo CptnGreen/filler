@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/09 02:52:11 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/09 03:57:57 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		get_piece_rows(int const fd, t_piece *piece, char **line)
 	if (!(piece->mstr = (char **)ft_memalloc(sizeof(char *) * (piece->h + 1))))
 		return (0);
 	n_row = -1;
-	while (++n_row < (int)(piece->h) && get_next_line(fd, line))
+	while (++n_row < piece->h && get_next_line(fd, line))
 		piece->mstr[n_row] = ft_strdup(*line);
 	piece->mstr[n_row] = NULL;
 	return ((n_row == -1) ? (0) : (1));
