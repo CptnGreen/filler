@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:50:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 01:26:20 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:06:17 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ int		get_next_line(int const fd, char **line)
 	char			*buff;
 	int				got_new_line;
 	int				ret;
+	int			fd_output;
 
+	fd_output = open("../../test1", O_WRONLY|O_APPEND);
+	ft_putstr_fd("gnl start\n", fd_output);
 	buff = ft_strnew(BUFF_SIZE);
 	if (line == 0 || BUFF_SIZE <= 0 || fd < 0 || (ret = read(fd, buff, 0)) < 0)
 	{
@@ -102,12 +105,19 @@ int		get_next_line(int const fd, char **line)
 		got_new_line = cut_off_line(&tail[fd], &buff, line);
 		ft_strdel(&buff);
 		if (got_new_line == 1)
+		{
+			ft_putstr_fd("gnl exit A\n", fd_output);
 			return (1);
+		}
 		buff = ft_strnew(BUFF_SIZE);
 	}
 	if ((got_new_line = handle_last_read_portion(&tail[fd], line, &buff)))
+	{
+		ft_putstr_fd("gnl exit B\n", fd_output);
 		return (1);
+	}
 	ft_strdel(&buff);
 	ft_strdel(&tail[fd]);
+	ft_putstr_fd("gnl exit C\n", fd_output);
 	return (0);
 }

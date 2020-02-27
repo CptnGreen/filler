@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/09 05:08:24 by slisandr         ###   ########.fr        #
+#    Updated: 2020/02/27 14:32:32 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -31,6 +31,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 SRC_RAW = \
+	init_players.c \
 	get_piece.c \
 	get_map.c \
 	wipe_piece.c \

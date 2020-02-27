@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/09 03:57:57 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/27 12:54:55 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,44 @@ t_piece	*init_piece(void)
 int		get_piece_dimensions(int const fd, t_piece *piece, char **line)
 {
 	char	**split;
+	int			fd_output;
 
+	fd_output = open(TEST_FILE, O_WRONLY|O_APPEND);
 	while (get_next_line(fd, line))
 	{
+		ft_putstr_fd(*line, fd_output);
+		ft_putchar_fd('\n', fd_output);
 		split = ft_strsplit(*line, ' ');
 		if (ft_strcmp(split[0], "Piece") == 0)
 		{
 			piece->h = ft_atoi(split[1]);
 			piece->w = ft_atoi(split[2]);
+			ft_putstr_fd("piece->h = ", fd_output);
+			ft_putnbr_fd(piece->h, fd_output);
+			ft_putchar_fd('\n', fd_output);
 			break ;
 		}
+		wipe_mstr(split);
 	}
-	wipe_mstr(split);
 	return ((piece->h == 0 || piece->w == 0) ? (0) : (1));
 }
 
 int		get_piece_rows(int const fd, t_piece *piece, char **line)
 {
 	int		n_row;
+	int			fd_output;
 
+	fd_output = open(TEST_FILE, O_WRONLY|O_APPEND);
+	ft_putstr_fd("GET_PIECE_ROWS:\n", fd_output);
 	if (!(piece->mstr = (char **)ft_memalloc(sizeof(char *) * (piece->h + 1))))
 		return (0);
 	n_row = -1;
 	while (++n_row < piece->h && get_next_line(fd, line))
+	{
+		ft_putstr_fd(*line, fd_output);
+		ft_putchar_fd('\n', fd_output);
 		piece->mstr[n_row] = ft_strdup(*line);
+	}
 	piece->mstr[n_row] = NULL;
 	return ((n_row == -1) ? (0) : (1));
 }
@@ -63,19 +77,21 @@ int		get_piece_rows(int const fd, t_piece *piece, char **line)
 t_piece	*get_piece(int const fd)
 {
 	t_piece	*piece;
-	char	**line;
+	char	*line;
+	int			fd_output;
 
+	fd_output = open(TEST_FILE, O_WRONLY|O_APPEND);
 	line = NULL;
 	if ((piece = init_piece()) && \
-		(line = (char **)ft_memalloc(sizeof(char *))) && \
-		get_piece_dimensions(fd, piece, line) && \
-		get_piece_rows(fd, piece, line))
+		/* (line = (char **)ft_memalloc(sizeof(char *))) && \ */
+		get_piece_dimensions(fd, piece, &line) && \
+		get_piece_rows(fd, piece, &line))
 	{
-		ft_strdel(line);
+		ft_strdel(&line);
 		/* print_mstr(piece->mstr); */
 		return (piece);
 	}
-	ft_strdel(line);
+	ft_strdel(&line);
 	wipe_piece(&piece);
 	return (NULL);
 }
