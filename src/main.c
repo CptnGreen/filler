@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 22:29:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/27 14:26:30 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/02/27 16:42:40 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int		main(void)
 	/* setbuf(stdout, NULL); // remove later! */
 	/* ft_putendl_fd("HELP!\n", fd_output); */
 	/* printf("main: I'm here!\n"); */
+	fd = 0;
 	line = NULL;
 	if (!(pl = init_players(fd, &line)))
 		return (1);
 	ft_strdel(&line);
-	fd = 0;
 	while (1)
 	{
 		if (!(m = get_map(fd, pl)))
