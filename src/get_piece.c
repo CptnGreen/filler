@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 09:16:51 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:06:58 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ t_piece	*init_piece(void)
 		return (NULL);
 	piece->h = 0;
 	piece->w = 0;
-	piece->x = 0;
-	piece->y = 0;
+	piece->row = 0;
+	piece->col = 0;
+	piece->best_row = -1;
+	piece->best_col = -1;
 	piece->sum = 0;
 	piece->best_sum = INT_MAX;
 	piece->n_intersecs = 0;
@@ -74,6 +76,5 @@ t_piece	*get_piece(int const fd)
 		return (piece);
 	}
 	ft_strdel(&line);
-	wipe_piece(&piece);
 	return (NULL);
 }

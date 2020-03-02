@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 09:22:21 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:06:58 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,5 @@ t_map	*get_map(int const fd, t_players *pl)
 		return (map);
 	}
 	ft_strdel(&line);
-	wipe_map(&map);
 	return (NULL);
 }

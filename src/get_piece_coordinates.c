@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 05:12:24 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 09:50:23 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/02 12:03:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int		check_try(t_map *m, t_piece *p, int i, int j)
 {
-	if (m->mtab[p->x + i][p->y + j] == m->c_enemy || p->n_intersecs > 1)
+	if (p->row + i > m->h || \
+		p->col + j > m->w || \
+		m->mtab[p->row + i][p->col + j] == m->c_enemy || \
+		p->n_intersecs > 1)
 	{
 		p->n_intersecs = 0;
 		p->sum = 0;
@@ -25,7 +28,7 @@ int		check_try(t_map *m, t_piece *p, int i, int j)
 
 int		check_connection(t_map *m, t_piece *p, int *i, int *j)
 {
-	if (m->mtab[p->x + (*i)][p->y + (*j)] == m->c_us)
+	if (m->mtab[p->row + (*i)][p->col + (*j)] == m->c_us)
 	{
 		p->n_intersecs += 1;
 		(*j) += 1;
@@ -55,7 +58,7 @@ void	handle_piece(t_map *m, t_piece *p)
 				return ;
 			if (!check_connection(m, p, &i, &j))
 				continue ;
-			p->sum += (m->mtab_tmp[p->x + i][p->y + j] - NUM_BASE);
+			p->sum += (m->mtab_tmp[p->row + i][p->col + j] - NUM_BASE);
 		}
 		j += 1;
 	}
@@ -67,22 +70,27 @@ void	try_coordinates(t_map *m, t_piece *p)
 	if (p->n_intersecs == 1 && p->sum < p->best_sum)
 	{
 		p->best_sum = p->sum;
-		p->best_x = p->x;
-		p->best_y = p->y;
+		p->best_row = p->row;
+		p->best_col = p->col;
 	}
 }
 
+/*
+** p->row and p->col - coordinates of piece's upper left corner
+** when it is put into the matrix
+*/
+
 void	get_piece_coordinates(t_map *m, t_piece *p)
 {
-	while (p->x + p->h <= m->h)
+	while (p->row + p->h <= m->h)
 	{
-		if (p->y + p->w > m->w)
+		if (p->col + p->w > m->w)
 		{
-			p->y = 0;
-			p->x += 1;
+			p->col = 0;
+			p->row += 1;
 			continue ;
 		}
 		try_coordinates(m, p);
-		p->y += 1;
+		p->col += 1;
 	}
 }

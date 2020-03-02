@@ -6,37 +6,48 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 22:29:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 09:52:14 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/02 13:24:32 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
+void	wipe_all(t_map **m, t_piece **p, t_players **pl)
+{
+	if (*m)
+		wipe_map(m);
+	if (*p)
+		wipe_piece(p);
+	if (*pl)
+		wipe_players(pl);
+}
+
 int		main(void)
 {
-	int			fd;
 	t_map		*m;
 	t_piece		*p;
 	t_players	*pl;
-	char		*line;
 
-	fd = 0;
-	line = NULL;
-	if (!(pl = init_players(fd, &line)))
-		return (1);
-	ft_strdel(&line);
-	while (1)
+	m = NULL;
+	p = NULL;
+	pl = NULL;
+	if ((pl = init_players(FD)))
 	{
-		if (!(m = get_map(fd, pl)))
-			return (1);
-		if (!(p = get_piece(fd)))
-			return (1);
-		get_piece_coordinates(m, p);
-		put_piece_in_mstr(m, p, p->best_x, p->best_y);
-		ft_putnbr(p->best_x);
-		ft_putchar(' ');
-		ft_putnbr(p->best_y);
-		ft_putchar('\n');
+		while (1)
+		{
+			if (!(m = get_map(FD, pl)))
+				break ;
+			if (!(p = get_piece(FD)))
+				break ;
+			get_piece_coordinates(m, p);
+			if (!(p->best_row == -1 || p->best_col == -1))
+				put_piece_in_mstr(m, p, p->best_row, p->best_col);
+			ft_putnbr(p->best_row);
+			ft_putchar(' ');
+			ft_putnbr(p->best_col);
+			ft_putchar('\n');
+		}
 	}
+	wipe_all(&m, &p, &pl);
 	return (0);
 }

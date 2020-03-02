@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabnew.c                                        :+:      :+:    :+:   */
+/*   wipe_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/02 12:46:37 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 12:47:13 by slisandr         ###   ########.fr       */
+/*   Created: 2020/03/02 10:50:02 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/02 12:22:00 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "filler.h"
 
-int		*ft_tabnew(size_t size)
+void	wipe_players(t_players **pl)
 {
-	int		*tab;
-	size_t	i;
-
-	tab = (int *)ft_memalloc(sizeof(int) * size);
-	if (tab)
-	{
-		i = 0;
-		while (i < size)
-			tab[i++] = 0;
-		return (tab);
-	}
-	free(tab);
-	tab = NULL;
-	return (NULL);
+	free(*pl);
+	*pl = NULL;
 }

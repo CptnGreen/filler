@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/02/27 14:32:32 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/02 12:52:56 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ MAIN = $(addprefix $(SRC_DIR)/,$(MAIN_RAW))
 TEST = test
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 NAME = slisandr.filler
 
@@ -36,6 +36,7 @@ SRC_RAW = \
 	get_map.c \
 	wipe_piece.c \
 	wipe_map.c \
+	wipe_players.c \
 	put_piece_in_mstr.c \
 	get_heat_map.c \
 	get_piece_coordinates.c
@@ -73,10 +74,10 @@ re: fclean all
 
 test: $(NAME)
 	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map00 -p1 resources/players/grati.filler -p2 resources/players/$(NAME)
+	./resources/filler_vm -f resources/maps/map01 -p1 resources/players/grati.filler -p2 resources/players/$(NAME)
 
 memcheck: re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME) $(TEST)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
 	vim valgrind-out.txt
 
 debug: all

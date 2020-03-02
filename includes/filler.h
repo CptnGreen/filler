@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/27 14:30:17 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/02 13:22:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct		s_piece{
 	char			**mstr;
 	int				h;
 	int				w;
-	int				x;
-	int				y;
-	int				best_x;
-	int				best_y;
+	int				row;
+	int				col;
+	int				best_row;
+	int				best_col;
 	int				sum;
 	int				best_sum;
 	int				n_intersecs;
@@ -50,11 +50,12 @@ typedef struct		s_map{
 	int				**mtab_tmp;
 }					t_map;
 
-t_players			*init_players(int const fd, char **line);
+t_players			*init_players(int const fd);
 t_map				*get_map(int const fd, t_players *pl);
 t_piece				*get_piece(int const fd);
 void				wipe_map(t_map **map);
 void				wipe_piece(t_piece **piece);
+void				wipe_players(t_players **pl);
 int					put_piece_in_mstr(t_map *m, t_piece *p, int x, int y);
 void				get_heat_map(t_map *m, int *found_dot, int x, int y);
 void				get_piece_coordinates(t_map *m, t_piece *p);
