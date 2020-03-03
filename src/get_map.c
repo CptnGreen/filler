@@ -80,6 +80,6 @@ t_map	*get_map(int const fd, t_players *pl)
 		ft_strdel(&line);
 		return (map);
 	}
-	ft_strdel(&line);
+	/* ft_strdel(&line); */
 	return (NULL);
 }

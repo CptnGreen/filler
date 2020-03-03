@@ -76,6 +76,6 @@ t_piece	*get_piece(int const fd)
 		ft_strdel(&line);
 		return (piece);
 	}
-	ft_strdel(&line);
+	/* ft_strdel(&line); */
 	return (NULL);
 }

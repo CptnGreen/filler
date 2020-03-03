@@ -38,10 +38,12 @@ int		main(void)
 			ft_putchar('\n');
 			if (p->best_row == -1 || p->best_col == -1)
 				break ;
+			wipe_map(&m);
+			wipe_piece(&p);
 		}
 	}
-	wipe_map(&m);
-	wipe_piece(&p);
-	wipe_players(&pl);
+	/* wipe_map(&m); */
+	/* wipe_piece(&p); */
+	/* wipe_players(&pl); */
 	return (0);
 }
