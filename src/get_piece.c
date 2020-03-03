@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 12:06:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/03 21:32:17 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ t_piece	*get_piece(int const fd)
 		ft_strdel(&line);
 		return (piece);
 	}
-	/* ft_strdel(&line); */
+	ft_strdel(&line);
 	return (NULL);
 }

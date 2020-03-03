@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:17:13 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 13:32:14 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/03 21:36:53 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ t_players	*init_players(int const fd)
 				pl->c_enemy = 'X';
 			}
 			wipe_mstr(split);
-			/* ft_strdel(&line); */
+			ft_strdel(&line);
 			return ((pl->c_us == 0 || pl->c_enemy == 0) ? (NULL) : (pl));
 		}
 		wipe_mstr(split);
 	}
-	/* wipe_players(&pl); */
-	/* ft_strdel(&line); */
+	wipe_players(&pl);
+	ft_strdel(&line);
 	return (NULL);
 }

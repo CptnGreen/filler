@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 05:12:24 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 12:03:47 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/03 22:13:38 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int		check_connection(t_map *m, t_piece *p, int *i, int *j)
 	{
 		p->n_intersecs += 1;
 		(*j) += 1;
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 void	handle_piece(t_map *m, t_piece *p)
@@ -56,7 +56,7 @@ void	handle_piece(t_map *m, t_piece *p)
 			}
 			if (!check_try(m, p, i, j))
 				return ;
-			if (!check_connection(m, p, &i, &j))
+			if (check_connection(m, p, &i, &j))
 				continue ;
 			p->sum += (m->mtab_tmp[p->row + i][p->col + j] - NUM_BASE);
 		}

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 22:13:23 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/08 22:20:58 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/03 23:56:47 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	wipe_mtab(int **m, size_t rows, size_t cols)
 	i = 0;
 	while (i < rows)
 	{
-		ft_bzero(m + i, cols);
+		/* ft_bzero(m + i, cols); */
 		ft_memdel((void **)(m + i));
 		i++;
 	}

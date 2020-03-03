@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/03/02 12:52:56 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/03 23:39:11 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -78,7 +78,6 @@ test: $(NAME)
 
 memcheck: re
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
-	vim valgrind-out.txt
 
 debug: all
 	lldb $(NAME)

@@ -6,11 +6,17 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 22:29:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 13:24:32 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/03 23:09:32 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+void	wipe_map_and_piece(t_map *m, t_piece *p)
+{
+	wipe_map(&m);
+	wipe_piece(&p);
+}
 
 int		main(void)
 {
@@ -37,13 +43,13 @@ int		main(void)
 			ft_putnbr(p->best_col);
 			ft_putchar('\n');
 			if (p->best_row == -1 || p->best_col == -1)
-				break ;
-			wipe_map(&m);
-			wipe_piece(&p);
+			{
+				wipe_map_and_piece(m, p);
+				wipe_players(&pl);
+				return (0);
+			}
+			/* wipe_map_and_piece(m, p); */
 		}
 	}
-	/* wipe_map(&m); */
-	/* wipe_piece(&p); */
-	/* wipe_players(&pl); */
-	return (0);
+	return (1);
 }

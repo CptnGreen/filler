@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/02 13:22:47 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/03 22:00:10 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@
 # define INT_MAX 2147483647
 
 # define FD 0
-# define TEST_FILE "test1"
 
 # include "libft.h"
-# include <stdio.h> // remove later!
 
 typedef struct		s_players{
 	char			c_us;
