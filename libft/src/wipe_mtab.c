@@ -29,4 +29,5 @@ void	wipe_mtab(int **m, size_t rows, size_t cols)
 	}
 	free(m);
 	m = NULL;
+	i += cols;
 }

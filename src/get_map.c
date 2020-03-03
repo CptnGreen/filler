@@ -35,11 +35,12 @@ int		get_map_dimensions(int const fd, t_map *map, char **line)
 		{
 			map->h = ft_atoi(split[1]);
 			map->w = ft_atoi(split[2]);
-			break ;
+			wipe_mstr(split);
+			return ((map->h == 0 || map->w == 0) ? (0) : (1));
 		}
 		wipe_mstr(split);
 	}
-	return ((map->h == 0 || map->w == 0) ? (0) : (1));
+	return (0);
 }
 
 int		get_map_rows(int const fd, t_map *map, char **line)

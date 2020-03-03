@@ -42,11 +42,12 @@ int		get_piece_dimensions(int const fd, t_piece *piece, char **line)
 		{
 			piece->h = ft_atoi(split[1]);
 			piece->w = ft_atoi(split[2]);
-			break ;
+			wipe_mstr(split);
+			return ((piece->h == 0 || piece->w == 0) ? (0) : (1));
 		}
 		wipe_mstr(split);
 	}
-	return ((piece->h == 0 || piece->w == 0) ? (0) : (1));
+	return (0);
 }
 
 int		get_piece_rows(int const fd, t_piece *piece, char **line)

@@ -12,16 +12,6 @@
 
 #include "filler.h"
 
-void	wipe_all(t_map **m, t_piece **p, t_players **pl)
-{
-	if (*m)
-		wipe_map(m);
-	if (*p)
-		wipe_piece(p);
-	if (*pl)
-		wipe_players(pl);
-}
-
 int		main(void)
 {
 	t_map		*m;
@@ -46,8 +36,12 @@ int		main(void)
 			ft_putchar(' ');
 			ft_putnbr(p->best_col);
 			ft_putchar('\n');
+			if (p->best_row == -1 || p->best_col == -1)
+				break ;
 		}
 	}
-	wipe_all(&m, &p, &pl);
+	wipe_map(&m);
+	wipe_piece(&p);
+	wipe_players(&pl);
 	return (0);
 }

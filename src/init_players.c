@@ -37,11 +37,12 @@ t_players	*init_players(int const fd)
 				pl->c_enemy = 'X';
 			}
 			wipe_mstr(split);
-			break ;
+			ft_strdel(&line);
+			return ((pl->c_us == 0 || pl->c_enemy == 0) ? (NULL) : (pl));
 		}
-		wipe_players(&pl);
 		wipe_mstr(split);
 	}
+	wipe_players(&pl);
 	ft_strdel(&line);
-	return ((pl->c_us == 0 || pl->c_enemy == 0) ? (NULL) : (pl));
+	return (NULL);
 }
