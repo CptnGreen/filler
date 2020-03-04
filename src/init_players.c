@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:17:13 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/04 22:19:12 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/04 23:33:18 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ t_players	*init_players(int const fd)
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		if (ft_strstr(line, "$$$ exec p2") != 0)
+		if (ft_strstr(line, "$$$ exec p") != NULL)
 		{
-			if (ft_strstr(line, "slisandr") != 0)
+			if ((ft_strstr(line, "$$$ exec p1") != NULL && ft_strstr(line, "slisandr") == NULL) || \
+				(ft_strstr(line, "$$$ exec p2") != NULL && ft_strstr(line, "slisandr") != NULL))
 			{
 				pl->c_us = 'X';
 				pl->c_enemy = 'O';
