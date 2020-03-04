@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 02:05:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/04 21:12:15 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/04 22:37:42 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,35 @@
 void	look_around(t_map *m, int row, int col)
 {
 	if (row + 1 < m->h && \
-		(m->mtab_tmp[row + 1][col] == '.' || m->mtab_tmp[row + 1][col] == m->c_us))
+		(m->mtab_tmp[row + 1][col] == '.' || ft_toupper(m->mtab_tmp[row + 1][col]) == m->c_us))
+	{
 		m->mtab_tmp[row + 1][col] = m->num;
+	}
 	if (row - 1 >= 0 && \
-		(m->mtab_tmp[row - 1][col] == '.' || m->mtab_tmp[row - 1][col] == m->c_us))
+		(m->mtab_tmp[row - 1][col] == '.' || ft_toupper(m->mtab_tmp[row - 1][col]) == m->c_us))
+	{
 		m->mtab_tmp[row - 1][col] = m->num;
+	}
 	if (col + 1 < m->w && \
-		(m->mtab_tmp[row][col + 1] == '.' || m->mtab_tmp[row][col + 1] == m->c_us))
+		(m->mtab_tmp[row][col + 1] == '.' || ft_toupper(m->mtab_tmp[row][col + 1]) == m->c_us))
+	{
 		m->mtab_tmp[row][col + 1] = m->num;
+	}
 	if (col - 1 >= 0 && \
-		(m->mtab_tmp[row][col - 1] == '.' || m->mtab_tmp[row][col - 1] == m->c_us))
+		(m->mtab_tmp[row][col - 1] == '.' || ft_toupper(m->mtab_tmp[row][col - 1]) == m->c_us))
+	{
 		m->mtab_tmp[row][col - 1] = m->num;
+	}
 }
 
 void	get_heat_map(t_map *m, int *found_dot, int row, int col)
 {
 	*found_dot = ((m->mtab_tmp[row][col] == '.') ? (1) : (*found_dot));
 	if (m->mtab_tmp[row][col] == m->num - 1 || \
-		m->mtab_tmp[row][col] == m->c_enemy || \
-		m->mtab_tmp[row][col] == ft_tolower(m->c_enemy))
+		ft_toupper(m->mtab_tmp[row][col]) == m->c_enemy)
+	{
 		look_around(m, row, col);
+	}
 	if (row == (int)(m->h) - 1 && col == (int)(m->w) - 1)
 	{
 		if (*found_dot == 1)

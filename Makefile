@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/03/04 22:14:32 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/04 22:35:17 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -74,7 +74,7 @@ re: fclean all
 
 test: $(NAME)
 	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map01 -p2 resources/players/superjeannot.filler -p1 resources/players/$(NAME)
+	./resources/filler_vm -f resources/maps/map01 -p1 resources/players/superjeannot.filler -p2 resources/players/$(NAME)
 
 memcheck: $(NAME)
 	cp $(NAME) resources/players/
