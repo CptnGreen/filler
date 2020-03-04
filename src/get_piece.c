@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/03 21:32:17 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/04 22:09:08 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int		get_piece_dimensions(int const fd, t_piece *piece, char **line)
 {
 	char	**split;
 
-	while (get_next_line(fd, line))
+	while (get_next_line(fd, line) > 0)
 	{
 		split = ft_strsplit(*line, ' ');
+		ft_strdel(line);
 		if (ft_strcmp(split[0], "Piece") == 0)
 		{
 			piece->h = ft_atoi(split[1]);
@@ -57,8 +58,11 @@ int		get_piece_rows(int const fd, t_piece *piece, char **line)
 	if (!(piece->mstr = (char **)ft_memalloc(sizeof(char *) * (piece->h + 1))))
 		return (0);
 	n_row = -1;
-	while (++n_row < piece->h && get_next_line(fd, line))
+	while (++n_row < piece->h && get_next_line(fd, line) > 0)
+	{
 		piece->mstr[n_row] = ft_strdup(*line);
+		ft_strdel(line);
+	}
 	piece->mstr[n_row] = NULL;
 	return ((n_row == -1) ? (0) : (1));
 }
@@ -73,9 +77,7 @@ t_piece	*get_piece(int const fd)
 		get_piece_dimensions(fd, piece, &line) && \
 		get_piece_rows(fd, piece, &line))
 	{
-		ft_strdel(&line);
 		return (piece);
 	}
-	ft_strdel(&line);
 	return (NULL);
 }

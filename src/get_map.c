@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/03 23:25:19 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/04 21:57:13 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int		get_map_dimensions(int const fd, t_map *map, char **line)
 {
 	char	**split;
 
-	while (get_next_line(fd, line))
+	while (get_next_line(fd, line) > 0)
 	{
 		split = ft_strsplit(*line, ' ');
+		ft_strdel(line);
 		if (ft_strcmp(split[0], "Plateau") == 0)
 		{
 			map->h = ft_atoi(split[1]);
@@ -48,13 +49,15 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 	char	**split;
 	int		n_row;
 
-	if (!(map->mtab = (int **)ft_memalloc(sizeof(int *) * (map->h))))
+	if (!(map->mtab = (int **)ft_memalloc(sizeof(int *) * (map->h + 1))))
 		return (0);
 	get_next_line(fd, line);
+	ft_strdel(line);
 	n_row = -1;
 	while (++n_row < map->h && get_next_line(fd, line) > 0)
 	{
 		split = ft_strsplit(*line, ' ');
+		ft_strdel(line);
 		map->mtab[n_row] = ft_strdup_int(split[1]);
 		wipe_mstr(split);
 	}
@@ -76,10 +79,8 @@ t_map	*get_map(int const fd, t_players *pl)
 		get_map_rows(fd, map, &line))
 	{
 		found_dot = 0;
-		ft_strdel(&line);
 		get_heat_map(map, &found_dot, 0, 0);
 		return (map);
 	}
-	ft_strdel(&line);
 	return (NULL);
 }

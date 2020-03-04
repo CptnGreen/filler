@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 02:05:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/04 00:07:31 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/04 21:12:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	look_around(t_map *m, int row, int col)
 		(m->mtab_tmp[row][col + 1] == '.' || m->mtab_tmp[row][col + 1] == m->c_us))
 		m->mtab_tmp[row][col + 1] = m->num;
 	if (col - 1 >= 0 && \
-		(m->mtab_tmp[row][col - 1] == '.' || m->mtab_tmp[row][col + 1] == m->c_us))
+		(m->mtab_tmp[row][col - 1] == '.' || m->mtab_tmp[row][col - 1] == m->c_us))
 		m->mtab_tmp[row][col - 1] = m->num;
 }
 
