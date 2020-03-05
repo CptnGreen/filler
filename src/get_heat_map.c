@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 02:05:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/04 22:37:42 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:08:33 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 void	look_around(t_map *m, int row, int col)
 {
 	if (row + 1 < m->h && \
-		(m->mtab_tmp[row + 1][col] == '.' || ft_toupper(m->mtab_tmp[row + 1][col]) == m->c_us))
+		(m->mtab_tmp[row + 1][col] == '.' || \
+		ft_toupper(m->mtab_tmp[row + 1][col]) == m->c_us))
 	{
 		m->mtab_tmp[row + 1][col] = m->num;
 	}
 	if (row - 1 >= 0 && \
-		(m->mtab_tmp[row - 1][col] == '.' || ft_toupper(m->mtab_tmp[row - 1][col]) == m->c_us))
+		(m->mtab_tmp[row - 1][col] == '.' || \
+		ft_toupper(m->mtab_tmp[row - 1][col]) == m->c_us))
 	{
 		m->mtab_tmp[row - 1][col] = m->num;
 	}
 	if (col + 1 < m->w && \
-		(m->mtab_tmp[row][col + 1] == '.' || ft_toupper(m->mtab_tmp[row][col + 1]) == m->c_us))
+		(m->mtab_tmp[row][col + 1] == '.' || \
+		ft_toupper(m->mtab_tmp[row][col + 1]) == m->c_us))
 	{
 		m->mtab_tmp[row][col + 1] = m->num;
 	}
 	if (col - 1 >= 0 && \
-		(m->mtab_tmp[row][col - 1] == '.' || ft_toupper(m->mtab_tmp[row][col - 1]) == m->c_us))
+		(m->mtab_tmp[row][col - 1] == '.' || \
+		ft_toupper(m->mtab_tmp[row][col - 1]) == m->c_us))
 	{
 		m->mtab_tmp[row][col - 1] = m->num;
 	}

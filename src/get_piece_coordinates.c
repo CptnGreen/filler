@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 05:12:24 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/04 22:29:00 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:13:22 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		check_try(t_map *m, t_piece *p, int i, int j)
 {
 	if (p->row + i > m->h || \
 		p->col + j > m->w || \
-		ft_toupper(m->mtab[p->row + i][p->col + j]) == m->c_enemy ||	\
+		ft_toupper(m->mtab[p->row + i][p->col + j]) == m->c_enemy || \
 		p->n_intersecs > 1)
 	{
 		p->n_intersecs = 0;
