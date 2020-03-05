@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 22:29:56 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 02:03:11 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 02:51:40 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,16 @@ int		main(void)
 		while (1)
 		{
 			if (!(m = get_map(FD, &pl)))
+			{
+				wipe_map(&m);
 				break ;
+			}
 			if (!(p = get_piece(FD)))
+			{
+				wipe_map(&m);
+				wipe_piece(&p);
 				break ;
+			}
 			get_piece_coordinates(m, p);
 			if (!(p->best_row == -1 || p->best_col == -1))
 				put_piece_in_mstr(m, p, p->best_row, p->best_col);
