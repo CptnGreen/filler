@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/03 22:00:10 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 01:38:22 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct		s_map{
 	int				**mtab_tmp;
 }					t_map;
 
-t_players			*init_players(int const fd);
+int					init_players(int const fd, t_players *pl);
 t_map				*get_map(int const fd, t_players *pl);
 t_piece				*get_piece(int const fd);
 void				wipe_map(t_map **map);

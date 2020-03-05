@@ -6,13 +6,13 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 14:17:13 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 01:13:32 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 02:23:04 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void		assign_letters(char *line, t_players *pl)
+int		assign_letters(char *line, t_players *pl)
 {
 	if ((ft_strstr(line, "$$$ exec p1") != NULL && \
 		ft_strstr(line, "slisandr") == NULL) || \
@@ -21,32 +21,35 @@ void		assign_letters(char *line, t_players *pl)
 	{
 		pl->c_us = 'X';
 		pl->c_enemy = 'O';
+		return (1);
 	}
-	else
+	else if ((ft_strstr(line, "$$$ exec p1") != NULL && \
+		ft_strstr(line, "slisandr") != NULL) || \
+		(ft_strstr(line, "$$$ exec p2") != NULL && \
+		ft_strstr(line, "slisandr") == NULL))
 	{
 		pl->c_us = 'O';
 		pl->c_enemy = 'X';
+		return (1);
 	}
+	return (0);
 }
 
-t_players	*init_players(int const fd)
+int		init_players(int const fd, t_players *pl)
 {
-	t_players	*pl;
 	char		*line;
 
-	if (!(pl = (t_players *)ft_memalloc(sizeof(t_players))))
-		return (NULL);
 	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (ft_strstr(line, "$$$ exec p") != NULL)
 		{
-			assign_letters(line, pl);
+			if (!(assign_letters(line, pl)))
+				return (0);
 			ft_strdel(&line);
-			return ((pl->c_us == 0 || pl->c_enemy == 0) ? (NULL) : (pl));
+			return ((pl->c_us == 0 || pl->c_enemy == 0) ? (0) : (1));
 		}
 		ft_strdel(&line);
 	}
-	wipe_players(&pl);
-	return (NULL);
+	return (0);
 }
