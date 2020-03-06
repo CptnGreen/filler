@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 01:51:44 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 02:59:25 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,19 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 	return ((n_row == -1) ? (0) : (1));
 }
 
-t_map	*get_map(int const fd, t_players *pl)
+int		get_map(int const fd, t_players *pl, t_map *map)
 {
-	t_map	*map;
 	char	*line;
 	int		found_dot;
 
 	line = NULL;
-	if ((map = (t_map *)ft_memalloc(sizeof(t_map))) && \
-		init_map(map, pl) && \
+	if (init_map(map, pl) && \
 		get_map_dimensions(fd, map, &line) && \
 		get_map_rows(fd, map, &line))
 	{
 		found_dot = 0;
 		get_heat_map(map, &found_dot, 0, 0);
-		return (map);
+		return (1);
 	}
-	return (NULL);
+	return (0);
 }

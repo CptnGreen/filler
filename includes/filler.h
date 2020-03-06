@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 18:47:33 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 01:38:22 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 03:09:20 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ typedef struct		s_map{
 }					t_map;
 
 int					init_players(int const fd, t_players *pl);
-t_map				*get_map(int const fd, t_players *pl);
-t_piece				*get_piece(int const fd);
-void				wipe_map(t_map **map);
-void				wipe_piece(t_piece **piece);
+int					get_map(int const fd, t_players *pl, t_map *map);
+int					get_piece(int const fd, t_piece *p);
+void				wipe_map(t_map *map);
+void				wipe_piece(t_piece *piece);
 void				wipe_players(t_players **pl);
 int					put_piece_in_mstr(t_map *m, t_piece *p, int x, int y);
 void				get_heat_map(t_map *m, int *found_dot, int x, int y);

@@ -6,18 +6,14 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 02:03:56 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 03:02:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-t_piece	*init_piece(void)
+int		init_piece(t_piece *piece)
 {
-	t_piece	*piece;
-
-	if (!(piece = (t_piece *)ft_memalloc(sizeof(t_piece))))
-		return (NULL);
 	piece->h = 0;
 	piece->w = 0;
 	piece->row = 0;
@@ -28,7 +24,7 @@ t_piece	*init_piece(void)
 	piece->best_sum = INT_MAX;
 	piece->n_intersecs = 0;
 	piece->mstr = NULL;
-	return (piece);
+	return (1);
 }
 
 int		get_piece_dimensions(int const fd, t_piece *piece, char **line)
@@ -72,17 +68,16 @@ int		get_piece_rows(int const fd, t_piece *piece, char **line)
 	return ((n_row == -1) ? (0) : (1));
 }
 
-t_piece	*get_piece(int const fd)
+int		get_piece(int const fd, t_piece *p)
 {
-	t_piece	*piece;
 	char	*line;
 
 	line = NULL;
-	if ((piece = init_piece()) && \
-		get_piece_dimensions(fd, piece, &line) && \
-		get_piece_rows(fd, piece, &line))
+	if (init_piece(p) && \
+		get_piece_dimensions(fd, p, &line) && \
+		get_piece_rows(fd, p, &line))
 	{
-		return (piece);
+		return (1);
 	}
-	return (NULL);
+	return (0);
 }
