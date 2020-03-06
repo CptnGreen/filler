@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/27 11:54:36 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/27 12:00:43 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 04:54:41 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 int		*ft_tabint(int const *ptr, size_t size, int c)
 {
-	int		*tab;
-	size_t	i;
+	int			*tab;
+	size_t		i;
 	int			fd_output;
 
-	fd_output = open("test1", O_WRONLY|O_APPEND);
+	fd_output = open("test1", O_WRONLY | O_APPEND);
 	tab = (int *)ptr;
 	i = 0;
 	while (i < size)

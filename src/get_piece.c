@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:02:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 03:02:09 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 04:21:15 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		get_piece_rows(int const fd, t_piece *piece, char **line)
 	{
 		if ((int)ft_strlen(*line) != piece->w)
 		{
+			piece->mstr[n_row + 1] = NULL;
 			ft_strdel(line);
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 02:59:25 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/06 04:18:36 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		get_map_rows(int const fd, t_map *map, char **line)
 		ft_strdel(line);
 		if ((int)ft_strlen(split[1]) != map->w)
 		{
+			map->mtab[n_row + 1] = NULL;
 			wipe_mstr(split);
 			return (0);
 		}
