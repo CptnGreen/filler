@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:06:17 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 14:53:29 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/07 17:05:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		get_map(int const fd, t_players *pl, t_map *map)
 		get_map_rows(fd, map, &line))
 	{
 		found_dot = 0;
-		get_heat_map(map, &found_dot, 0, 0);
+		get_heat_map(map, &found_dot);
 		return (1);
 	}
 	return (0);

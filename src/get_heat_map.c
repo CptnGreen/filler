@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 02:05:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 01:08:33 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/07 18:28:56 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,39 @@ void	look_around(t_map *m, int row, int col)
 	}
 }
 
-void	get_heat_map(t_map *m, int *found_dot, int row, int col)
+void	check_if_found_dot(t_map *m, int *found_dot)
 {
-	*found_dot = ((m->mtab_tmp[row][col] == '.') ? (1) : (*found_dot));
-	if (m->mtab_tmp[row][col] == m->num - 1 || \
-		ft_toupper(m->mtab_tmp[row][col]) == m->c_enemy)
+	if (*found_dot == 1)
 	{
-		look_around(m, row, col);
+		*found_dot = 0;
+		m->num += 1;
+		get_heat_map(m, found_dot);
 	}
-	if (row == (int)(m->h) - 1 && col == (int)(m->w) - 1)
+}
+
+void	get_heat_map(t_map *m, int *found_dot)
+{
+	int		row;
+	int		col;
+
+	row = 0;
+	col = 0;
+	while (1)
 	{
-		if (*found_dot == 1)
+		*found_dot = ((m->mtab_tmp[row][col] == '.') ? (1) : (*found_dot));
+		if (m->mtab_tmp[row][col] == m->num - 1 || \
+			ft_toupper(m->mtab_tmp[row][col]) == m->c_enemy)
+			look_around(m, row, col);
+		if (row == (int)(m->h) - 1 && col == (int)(m->w) - 1)
+			break ;
+		if (col + 1 == (int)(m->w))
 		{
-			*found_dot = 0;
-			m->num += 1;
-			get_heat_map(m, found_dot, 0, 0);
+			col = 0;
+			row += 1;
 		}
-		return ;
+		else
+			col += 1;
 	}
-	else if (col + 1 == (int)(m->w))
-		get_heat_map(m, found_dot, row + 1, 0);
-	else
-		get_heat_map(m, found_dot, row, col + 1);
+	check_if_found_dot(m, found_dot);
+	return ;
 }
