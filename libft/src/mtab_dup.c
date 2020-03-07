@@ -6,32 +6,36 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 00:43:19 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/09 00:48:17 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/07 14:46:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		**mtab_dup(int **m, unsigned int rows, unsigned int cols)
+int		**mtab_dup(int const **m, unsigned int rows, unsigned int cols)
 {
 	int					**matrix;
 	unsigned int		i;
 	unsigned int		j;
 
-	if (!(matrix = (int	**)ft_memalloc((rows + 1) * sizeof(int *))))
-		return (NULL);
-	i = 0;
-	while (i < rows)
+	matrix = NULL;
+	if (rows != 0 && cols != 0)
 	{
-		matrix[i] = ft_tabnew(cols);
-		j = 0;
-		while (j < cols)
+		if (!(matrix = (int	**)ft_memalloc((rows + 1) * sizeof(int *))))
+			return (NULL);
+		i = 0;
+		while (i < rows)
 		{
-			matrix[i][j] = m[i][j];
-			j++;
+			matrix[i] = ft_tabnew(cols);
+			j = 0;
+			while (j < cols)
+			{
+				matrix[i][j] = m[i][j];
+				j++;
+			}
+			i++;
 		}
-		i++;
+		matrix[i] = NULL;
 	}
-	matrix[i] = NULL;
 	return (matrix);
 }

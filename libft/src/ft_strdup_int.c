@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 22:25:14 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/27 11:54:07 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/07 14:50:25 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,24 @@
 ** Similar to ft_strdup() but returns tab of ints
 */
 
-int		*ft_strdup_int(char const *s1)
+int		*ft_strdup_int(char const *str)
 {
 	int		*dup;
 	int		len;
 	int		i;
 
-	i = 0;
-	len = ft_strlen(s1);
-	dup = (int *)ft_memalloc(sizeof(int) * len);
-	if (dup)
+	dup = NULL;
+	if (str)
 	{
+		len = ft_strlen(str);
+		if (!(dup = (int *)ft_memalloc(sizeof(int) * len)))
+			return (NULL);
+		i = 0;
 		while (i < len)
 		{
-			dup[i] = (int)(s1[i]);
+			dup[i] = (int)(str[i]);
 			i += 1;
 		}
-		return (dup);
 	}
-	return (NULL);
+	return (dup);
 }

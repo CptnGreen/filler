@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 23:14:26 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 04:00:02 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/07 14:38:38 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,23 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void	*ptr;
 	char	*str;
 	size_t	i;
 
-	ptr = NULL;
 	str = NULL;
 	if (size != 0)
 	{
-		ptr = malloc(sizeof(char) * size);
-		if (!ptr)
+		if (!(str = (char *)malloc(sizeof(char) * size)))
 			return (NULL);
 		else
 		{
-			str = (char *)ptr;
 			i = 0;
 			while (i < size)
 			{
 				str[i] = 0;
-				i++;
+				i += 1;
 			}
 		}
 	}
-	str = NULL;
-	return (ptr);
+	return ((void *)str);
 }
