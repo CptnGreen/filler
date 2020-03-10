@@ -6,11 +6,13 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 02:05:59 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/07 18:28:56 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/10 22:33:16 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
+
+#define MULT 1
 
 void	look_around(t_map *m, int row, int col)
 {
@@ -18,25 +20,25 @@ void	look_around(t_map *m, int row, int col)
 		(m->mtab_tmp[row + 1][col] == '.' || \
 		ft_toupper(m->mtab_tmp[row + 1][col]) == m->c_us))
 	{
-		m->mtab_tmp[row + 1][col] = m->num;
+		m->mtab_tmp[row + 1][col] = m->num * MULT;
 	}
 	if (row - 1 >= 0 && \
 		(m->mtab_tmp[row - 1][col] == '.' || \
 		ft_toupper(m->mtab_tmp[row - 1][col]) == m->c_us))
 	{
-		m->mtab_tmp[row - 1][col] = m->num;
+		m->mtab_tmp[row - 1][col] = m->num * MULT;
 	}
 	if (col + 1 < m->w && \
 		(m->mtab_tmp[row][col + 1] == '.' || \
 		ft_toupper(m->mtab_tmp[row][col + 1]) == m->c_us))
 	{
-		m->mtab_tmp[row][col + 1] = m->num;
+		m->mtab_tmp[row][col + 1] = m->num * MULT;
 	}
 	if (col - 1 >= 0 && \
 		(m->mtab_tmp[row][col - 1] == '.' || \
 		ft_toupper(m->mtab_tmp[row][col - 1]) == m->c_us))
 	{
-		m->mtab_tmp[row][col - 1] = m->num;
+		m->mtab_tmp[row][col - 1] = m->num * MULT;
 	}
 }
 
@@ -60,7 +62,7 @@ void	get_heat_map(t_map *m, int *found_dot)
 	while (1)
 	{
 		*found_dot = ((m->mtab_tmp[row][col] == '.') ? (1) : (*found_dot));
-		if (m->mtab_tmp[row][col] == m->num - 1 || \
+		if (m->mtab_tmp[row][col] == (m->num - 1) * MULT || \
 			ft_toupper(m->mtab_tmp[row][col]) == m->c_enemy)
 			look_around(m, row, col);
 		if (row == (int)(m->h) - 1 && col == (int)(m->w) - 1)

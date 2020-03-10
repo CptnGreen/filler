@@ -6,7 +6,7 @@
 /*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/02 09:23:04 by slisandr          #+#    #+#             */
-/*   Updated: 2020/03/06 04:52:10 by slisandr         ###   ########.fr       */
+/*   Updated: 2020/03/10 22:25:35 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	wipe_piece(t_piece *piece)
 {
-	wipe_mstr(piece->mstr);
-	piece = NULL;
+	if (piece)
+	{
+		wipe_mstr(piece->mstr);
+		piece = NULL;
+	}
 }

@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/03/07 18:29:46 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/10 22:44:39 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ MAIN = $(addprefix $(SRC_DIR)/,$(MAIN_RAW))
 TEST = test
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -O2
 
 NAME = slisandr.filler
 
@@ -36,8 +36,6 @@ SRC_RAW = \
 	get_map.c \
 	wipe_piece.c \
 	wipe_map.c \
-	wipe_players.c \
-	put_piece_in_mstr.c \
 	get_heat_map.c \
 	get_piece_coordinates.c
 
@@ -74,7 +72,7 @@ re: fclean all
 
 test: $(NAME)
 	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map02 -p2 resources/players/abanlin.filler -p1 resources/players/$(NAME)
+	./resources/filler_vm -f resources/maps/map02 -p2 resources/players/carli.filler -p1 resources/players/$(NAME)
 
 memcheck: $(NAME)
 	cp $(NAME) resources/players/
