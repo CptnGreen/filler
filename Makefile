@@ -6,7 +6,7 @@
 #    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/03/10 23:03:58 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/12 06:35:11 by slisandr         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ MAIN = $(addprefix $(SRC_DIR)/,$(MAIN_RAW))
 TEST = test
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 NAME = slisandr.filler
 
@@ -72,7 +72,7 @@ re: fclean all
 
 test: $(NAME)
 	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map02 -p2 resources/players/carli.filler -p1 resources/players/$(NAME) -q
+	./resources/filler_vm -f resources/maps/map02 -p2 resources/players/carli.filler -p1 resources/players/$(NAME)
 
 memcheck: $(NAME)
 	cp $(NAME) resources/players/
