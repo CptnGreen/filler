@@ -10,11 +10,6 @@
 #                                                                              #
 #******************************************************************************#
 
-# COLORS
-GREEN = \033[0;32m
-RED = \033[0;31m
-RESET = \033[0m
-
 .PHONY: all re clean fclean test memcheck libft debug
 
 MAIN_RAW = main.c
@@ -46,26 +41,20 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_RAW:.c=.o))
 all: $(NAME)
 
 $(NAME): libft $(OBJ_DIR) $(OBJ)
-	@ echo "$(NAME): $(GREEN)object files were created$(RESET)"
 	@ $(CC) -o $(NAME) $(OBJ) $(MAIN) -I "includes/" -I "libft/includes/" -L "libft/" -lft
-	@ echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 libft:
 	@ make -C libft/
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@ $(CC) $(CFLAGS) -I "includes/" -I "libft/includes/" -c $< -o $@
 $(OBJ_DIR):
 	@ mkdir -p $(OBJ_DIR)
-	@ echo "$(NAME): $(GREEN)$(OBJ_DIR) folder was created$(RESET)"
 
 
 clean:
 	@ rm -rf $(OBJ_DIR)
-	@ echo "$(NAME): $(RED)object files were deleted$(RESET)"
-	@ echo "$(NAME): $(RED)$(OBJ_DIR) folder was deleted$(RESET)"
 	@ make -C libft/ clean
 fclean: clean
 	@ rm -rf $(NAME)
-	@ echo "$(NAME): $(RED)$(NAME) was deleted$(RESET)"
 	@ make -C libft/ fclean
 re: fclean all
 
