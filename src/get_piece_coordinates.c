@@ -37,7 +37,7 @@ int		check_connection(t_map *m, t_piece *p, int *i, int *j)
 	return (0);
 }
 
-void	handle_piece(t_map *m, t_piece *p)
+void	try_piece(t_map *m, t_piece *p)
 {
 	int		i;
 	int		j;
@@ -46,14 +46,14 @@ void	handle_piece(t_map *m, t_piece *p)
 	j = 0;
 	while (i < p->h)
 	{
+		if (j == p->w)
+		{
+			j = 0;
+			i += 1;
+			continue ;
+		}
 		if (p->mstr[i][j] != '.')
 		{
-			if (j == p->w)
-			{
-				j = 0;
-				i += 1;
-				continue ;
-			}
 			if (!check_try(m, p, i, j))
 				return ;
 			if (check_connection(m, p, &i, &j))
@@ -64,10 +64,10 @@ void	handle_piece(t_map *m, t_piece *p)
 	}
 }
 
-void	try_coordinates(t_map *m, t_piece *p)
+void	compare_with_best(t_map *m, t_piece *p)
 {
-	handle_piece(m, p);
-	if (p->n_intersecs == 1 && p->sum < p->best_sum)
+	try_piece(m, p);
+	if (p->n_intersecs == 1 && p->sum <= p->best_sum)
 	{
 		p->best_sum = p->sum;
 		p->best_row = p->row;
@@ -90,7 +90,7 @@ void	get_piece_coordinates(t_map *m, t_piece *p)
 			p->row += 1;
 			continue ;
 		}
-		try_coordinates(m, p);
+		compare_with_best(m, p);
 		p->col += 1;
 	}
 }
