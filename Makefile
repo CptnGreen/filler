@@ -61,7 +61,7 @@ re: fclean all
 
 test: $(NAME)
 	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map02 -p2 resources/players/carli.filler -p1 resources/players/$(NAME)
+	./resources/filler_vm -f resources/maps/map00 -p2 resources/players/$(NAME) -p1 resources/players/slisandr_heatmap.filler
 
 memcheck: $(NAME)
 	cp $(NAME) resources/players/

@@ -12,21 +12,14 @@
 
 #include "filler.h"
 
-int		check_try(t_map *m, t_piece *p, int i, int j)
+int		check_connection_with_enemy(t_map *m, t_piece *p, int i, int j)
 {
-	if (p->row + i > m->h || \
-		p->col + j > m->w || \
-		ft_toupper(m->mtab[p->row + i][p->col + j]) == m->c_enemy || \
-		p->n_intersecs > 1)
-	{
-		p->n_intersecs = 0;
-		p->sum = 0;
-		return (0);
-	}
-	return (1);
+	if (ft_toupper(m->mtab[p->row + i][p->col + j]) == m->c_enemy)
+		return (1);
+	return (0);
 }
 
-int		check_connection(t_map *m, t_piece *p, int *i, int *j)
+int		check_connection_with_base(t_map *m, t_piece *p, int *i, int *j)
 {
 	if (ft_toupper(m->mtab[p->row + (*i)][p->col + (*j)]) == m->c_us)
 	{
@@ -37,7 +30,7 @@ int		check_connection(t_map *m, t_piece *p, int *i, int *j)
 	return (0);
 }
 
-void	try_piece(t_map *m, t_piece *p)
+int		try_piece(t_map *m, t_piece *p)
 {
 	int		i;
 	int		j;
@@ -46,6 +39,8 @@ void	try_piece(t_map *m, t_piece *p)
 	j = 0;
 	while (i < p->h)
 	{
+		if (p->n_intersecs > 1)
+			return (0);
 		if (j == p->w)
 		{
 			j = 0;
@@ -54,25 +49,27 @@ void	try_piece(t_map *m, t_piece *p)
 		}
 		if (p->mstr[i][j] != '.')
 		{
-			if (!check_try(m, p, i, j))
-				return ;
-			if (check_connection(m, p, &i, &j))
+			if (check_connection_with_enemy(m, p, i, j))
+				return (0);
+			if (check_connection_with_base(m, p, &i, &j))
 				continue ;
 			p->sum += (m->mtab_tmp[p->row + i][p->col + j] - NUM_BASE);
 		}
 		j += 1;
 	}
+	return ((p->n_intersecs == 1) ? (1) : (0));
 }
 
 void	compare_with_best(t_map *m, t_piece *p)
 {
-	try_piece(m, p);
-	if (p->n_intersecs == 1 && p->sum <= p->best_sum)
+	if (try_piece(m, p) && p->sum <= p->best_sum)
 	{
 		p->best_sum = p->sum;
 		p->best_row = p->row;
 		p->best_col = p->col;
 	}
+	p->n_intersecs = 0;
+	p->sum = 0;
 }
 
 /*
