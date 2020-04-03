@@ -39,8 +39,6 @@ int		try_piece(t_map *m, t_piece *p)
 	j = 0;
 	while (i < p->h)
 	{
-		if (p->n_intersecs > 1)
-			return (0);
 		if (j == p->w)
 		{
 			j = 0;
@@ -49,7 +47,7 @@ int		try_piece(t_map *m, t_piece *p)
 		}
 		if (p->mstr[i][j] != '.')
 		{
-			if (check_connection_with_enemy(m, p, i, j))
+			if (check_connection_with_enemy(m, p, i, j) || p->n_intersecs > 1)
 				return (0);
 			if (check_connection_with_base(m, p, &i, &j))
 				continue ;

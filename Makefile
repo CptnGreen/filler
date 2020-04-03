@@ -65,7 +65,7 @@ test: $(NAME)
 
 memcheck: $(NAME)
 	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map02 -p2 resources/players/grati.filler -p1 resources/players/$(NAME) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
+	./resources/filler_vm -f resources/maps/map00 -p2 resources/players/carli.filler -p1 resources/players/$(NAME) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
 	vim valgrind-out.txt
 
 debug: all
