@@ -6,7 +6,7 @@
 #    By: slisandr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/12 21:31:09 by slisandr          #+#    #+#              #
-#    Updated: 2020/03/12 06:35:23 by slisandr         ###   ########.fr        #
+#    Updated: 2020/03/10 23:04:10 by slisandr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ SRC_RAW = \
 			ft_lstadd.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
-			get_matrix_of_dots.c \
+			get_matrix_of_char.c \
 			get_mtab_of_dots.c \
 			get_mstr_h.c \
 			get_mstr_w.c \
@@ -96,6 +96,7 @@ SRC_RAW = \
 			ft_tabint.c \
 			ft_tabdup.c \
 			mtab_dup.c \
+			mstr_dup.c \
 			get_next_line.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_RAW))
@@ -127,4 +128,4 @@ re: fclean all
 exec: $(NAME)
 	@ gcc -I "includes/" main.c -L . -lft -o $(EXEC)
 norm:
-	@ norminette $(SRC) libft.h
+	@ norminette $(SRC_DIR) includes

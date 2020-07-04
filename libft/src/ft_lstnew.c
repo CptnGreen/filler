@@ -38,7 +38,7 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 	else
 	{
 		cur->content = ft_memmove(ft_memalloc(sizeof(void const *)), \
-					content, content_size);
+									content, content_size);
 		cur->content_size = content_size;
 	}
 	cur->next = NULL;

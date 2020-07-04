@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+/*
+** Returns:
+** - (-1) if couldn't find '\n' in a string
+** - some integer - position of the first '\n' found in the string
+*/
+
 int		find_endline(char *tail)
 {
 	int		i;
@@ -75,7 +81,8 @@ int		handle_last_read_portion(char **tail, char **line, char **buff)
 		ft_strdel(buff);
 		return (1);
 	}
-	else if (ft_strlen(*tail) > 0)
+	ft_strdel(buff);
+	if (ft_strlen(*tail) > 0)
 	{
 		*line = ft_strdup(*tail);
 		ft_strdel(tail);
@@ -83,6 +90,13 @@ int		handle_last_read_portion(char **tail, char **line, char **buff)
 	}
 	return (0);
 }
+
+/*
+** get_next_line() returns:
+** - (-1) on error
+** - (1) if successfully read new line
+** - (0) if no more lines present
+*/
 
 int		get_next_line(int const fd, char **line)
 {
@@ -107,7 +121,6 @@ int		get_next_line(int const fd, char **line)
 	}
 	if ((got_new_line = handle_last_read_portion(&tail[fd], line, &buff)))
 		return (1);
-	ft_strdel(&buff);
 	ft_strdel(&tail[fd]);
 	return (0);
 }

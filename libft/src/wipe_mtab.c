@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /*
 ** This one is like wipe_mstr() but for int arrays
 */
-
-#include "libft.h"
 
 void	wipe_mtab(int **m, size_t rows, size_t cols)
 {

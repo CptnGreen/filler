@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /*
 ** ft_strncat: writes no more than n bytes from s2 to the end of s1
 ** NB: if src_len >= n it does not need to be terminated
 */
-
-#include "libft.h"
 
 char	*ft_strncat(char *restrict s1, char const *restrict s2, size_t n)
 {

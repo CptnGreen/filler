@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /*
 ** Similar to ft_strchr() but for ints
 */
-
-#include "libft.h"
 
 int		*ft_tabint(int const *ptr, size_t size, int c)
 {

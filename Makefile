@@ -1,26 +1,12 @@
-#******************************************************************************#
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/28 00:07:33 by slisandr          #+#    #+#              #
-#    Updated: 2020/03/12 06:35:11 by slisandr         ###   ########.fr        #
-#                                                                              #
-#******************************************************************************#
-
-.PHONY: all re clean fclean test memcheck libft debug
+.PHONY: all re clean fclean libft 
 
 MAIN_RAW = main.c
 MAIN = $(addprefix $(SRC_DIR)/,$(MAIN_RAW))
 
-TEST = test
-
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-NAME = slisandr.filler
+NAME = fcatina.filler
 
 SRC_DIR = src
 OBJ_DIR = obj
@@ -57,16 +43,3 @@ fclean: clean
 	@ rm -rf $(NAME)
 	@ make -C libft/ fclean
 re: fclean all
-
-
-test: $(NAME)
-	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map00 -p2 resources/players/$(NAME) -p1 resources/players/slisandr_heatmap.filler
-
-memcheck: $(NAME)
-	cp $(NAME) resources/players/
-	./resources/filler_vm -f resources/maps/map00 -p2 resources/players/carli.filler -p1 resources/players/$(NAME) | valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME)
-	vim valgrind-out.txt
-
-debug: all
-	lldb $(NAME)

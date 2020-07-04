@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 /*
 ** strcpy: copies src to dst
 ** 1) src and dst may not overlap (behaviour is unpredictable)
 ** 2) dst must be larger or equal then src (same reason)
 */
-
-#include "libft.h"
 
 char	*ft_strcpy(char *dst, char const *src)
 {

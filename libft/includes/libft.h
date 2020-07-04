@@ -19,10 +19,6 @@
 
 # include "get_next_line.h"
 
-# define MIN_OF_TWO(Value1, Value2) ((Value1 < Value2) ? (Value1) : (Value2))
-# define MAX_OF_TWO(Value1, Value2) ((Value1 > Value2) ? (Value1) : (Value2))
-# define ABS(Value) ((Value >= 0) ? (Value) : (Value * (-1)))
-
 typedef struct	s_list
 {
 	void				*content;
@@ -47,7 +43,7 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memset(void *b, int c, size_t len);
 void			*ft_memcpy(void *restrict dst, \
-		void const *restrict src, size_t n);
+							void const *restrict src, size_t n);
 void			*ft_memccpy(void *dest, void const *src, int c, size_t n);
 void			*ft_memmove(void *dest, void const *src, size_t n);
 
@@ -67,7 +63,7 @@ size_t			ft_strlen(char const *str);
 
 char			*ft_strcat(char *restrict s1, char const *restrict s2);
 char			*ft_strncat(char *restrict s1, \
-		char const *restrict s2, size_t n);
+							char const *restrict s2, size_t n);
 size_t			ft_strlcat(char *dst, char const *src, size_t size);
 
 int				ft_strcmp(char const *s1, char const *s2);
@@ -84,7 +80,7 @@ void			*ft_memchr(void const *s, int c, size_t n);
 
 char			*ft_strstr(char const *haystack, char const *needle);
 char			*ft_strnstr(char const *haystack, \
-		char const *needle, size_t len);
+							char const *needle, size_t len);
 
 char			*ft_strcpy(char *dst, char const *src);
 char			*ft_strncpy(char *dst, char const *src, size_t len);
@@ -132,7 +128,8 @@ void			print_mstr(char **matrix);
 void			print_mtab(int **matrix, size_t rows, size_t cols);
 size_t			get_mstr_w(char **m);
 size_t			get_mstr_h(char **m);
-char			**get_matrix_of_dots(unsigned int rows, unsigned int cols);
+char			**get_matrix_of_char(\
+					unsigned int rows, unsigned int cols, char c);
 int				**get_mtab_of_dots(unsigned int rows, unsigned int cols);
 char			**join_matrices_str(char **m1, char **m2);
 char			*ft_mstr_to_str(char **m_str);
@@ -141,5 +138,7 @@ int				*ft_tabdup(int const *tab, size_t size);
 int				*ft_strdup_int(char const *s1);
 int				*ft_tabint(int const *ptr, size_t size, int c);
 int				**mtab_dup(int const **m, unsigned int rows, unsigned int cols);
+char			**mstr_dup(\
+					char const **m, unsigned int rows, unsigned int cols);
 
 #endif

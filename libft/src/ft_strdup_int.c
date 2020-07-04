@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 /*
 ** Similar to ft_strdup() but returns tab of ints

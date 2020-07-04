@@ -24,7 +24,7 @@ static int		get_len(int n)
 		len = 1;
 	else
 	{
-		n_copy = ABS(n);
+		n_copy = ((n < 0) ? (n * (-1)) : (n));
 		while (n_copy > 0)
 		{
 			n_copy /= 10;
@@ -41,7 +41,7 @@ static void		get_array(char *str, int n, int len)
 
 	if (n < 0)
 		str[0] = '-';
-	n_copy = ABS(n);
+	n_copy = ((n < 0) ? (n * (-1)) : (n));
 	i = ARRAY_SIZE(n, len) - 2;
 	while (n_copy > 0)
 	{

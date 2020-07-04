@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_matrix_of_dots.c                               :+:      :+:    :+:   */
+/*   mstr_dup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slisandr <slisandr@student.21-sch...>      +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 02:34:14 by slisandr          #+#    #+#             */
-/*   Updated: 2020/02/05 04:47:56 by slisandr         ###   ########.fr       */
+/*   Created: 2020/02/09 00:43:19 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/07 14:46:09 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**get_matrix_of_dots(unsigned int rows, unsigned int cols)
+char	**mstr_dup(char const **m, unsigned int rows, unsigned int cols)
 {
 	char				**matrix;
 	unsigned int		i;
-	unsigned int		j;
 
-	if (!(matrix = (char **)malloc((rows + 1) * sizeof(char *))))
-		return (NULL);
-	i = 0;
-	while (i < rows)
+	matrix = NULL;
+	if (rows != 0 && cols != 0)
 	{
-		matrix[i] = ft_strnew(cols);
-		j = 0;
-		while (j < cols)
+		if (!(matrix = (char **)ft_memalloc((rows + 1) * sizeof(char *))))
+			return (NULL);
+		i = 0;
+		while (i < rows)
 		{
-			matrix[i][j] = '.';
-			j++;
+			matrix[i] = ft_strdup(m[i]);
+			i++;
 		}
-		i++;
+		matrix[i] = NULL;
 	}
-	matrix[i] = NULL;
 	return (matrix);
 }

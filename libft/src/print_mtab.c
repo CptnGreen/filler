@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** This function prints matrix of integers;
-** it can be easily tweaked to print what you want for the task at hand
-*/
+#include "libft.h"
 
 #define RED		"\x1B[31m"
 #define GRN		"\x1B[32m"
@@ -33,7 +30,10 @@
 #define BG_CYN	"\x1B[46m"
 #define BG_WHT	"\x1B[47m"
 
-#include "libft.h"
+/*
+** This function prints matrix of integers;
+** it can be easily tweaked to print what you want for the task at hand
+*/
 
 void	print_mtab(int **matrix, size_t rows, size_t cols)
 {
@@ -58,5 +58,4 @@ void	print_mtab(int **matrix, size_t rows, size_t cols)
 			j++;
 		}
 	}
-	ft_putendl("print_mtab: finished\n");
 }

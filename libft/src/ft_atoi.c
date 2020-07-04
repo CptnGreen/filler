@@ -44,7 +44,7 @@ int					ft_atoi(char const *str)
 	while (s[i] >= '0' && s[i] <= '9')
 	{
 		res = res * 10 + (s[i++] - '0');
-		if (i > 20)
+		if (res > 2147483647)
 			return ((sign == -1) ? (0) : (-1));
 	}
 	return (res * sign);
