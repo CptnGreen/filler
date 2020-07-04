@@ -1,0 +1,7 @@
+-I./src
+-I./libft/src
+-I./includes
+-I./libft/includes
+-Wall
+-Werror
+-Wextra
