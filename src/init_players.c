@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fcatina <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: slisandr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/27 14:17:13 by fcatina           #+#    #+#             */
-/*   Updated: 2020/03/06 02:45:42 by fcatina          ###   ########.fr       */
+/*   Created: 2020/02/27 14:17:13 by slisandr          #+#    #+#             */
+/*   Updated: 2020/03/06 02:45:42 by slisandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 int		assign_letters(char *line, t_players *pl)
 {
 	if ((ft_strstr(line, "$$$ exec p1") != NULL && \
-		ft_strstr(line, "fcatina") == NULL) || \
+		ft_strstr(line, "slisandr") == NULL) || \
 		(ft_strstr(line, "$$$ exec p2") != NULL && \
-		ft_strstr(line, "fcatina") != NULL))
+		ft_strstr(line, "slisandr") != NULL))
 	{
 		pl->c_us = 'X';
 		pl->c_enemy = 'O';
 		return (1);
 	}
 	else if ((ft_strstr(line, "$$$ exec p1") != NULL && \
-		ft_strstr(line, "fcatina") != NULL) || \
+		ft_strstr(line, "slisandr") != NULL) || \
 		(ft_strstr(line, "$$$ exec p2") != NULL && \
-		ft_strstr(line, "fcatina") == NULL))
+		ft_strstr(line, "slisandr") == NULL))
 	{
 		pl->c_us = 'O';
 		pl->c_enemy = 'X';

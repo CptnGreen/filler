@@ -32,12 +32,12 @@ int		print_coordinates(t_piece *p)
 
 int		get_map_and_piece(int fd, t_map *m, t_piece *p, t_players *pl)
 {
-	if (!(get_map(FD, pl, m)))
+	if (!(get_map(fd, pl, m)))
 	{
 		wipe_map(m);
 		return (0);
 	}
-	if (!(get_piece(FD, p)))
+	if (!(get_piece(fd, p)))
 	{
 		wipe_map(m);
 		wipe_piece(p);
